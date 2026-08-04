@@ -1,6 +1,41 @@
-# Obsidian vault config — machine-local
-.obsidian/
-
 # Scratch folders: volatile by design, never documented, never committed.
 # See the root CLAUDE.md — "temp/ is volatile".
 temp/
+
+# Claude Code machine-local permissions. settings.json is shared and committed;
+# settings.local.json is personal and is not.
+.claude/settings.local.json
+
+# ---------------------------------------------------------------------------
+# Coursework code lives in this repo (CPE334 labs, ML notebooks). save-checkpoint.py
+# runs `git add -A`, so anything not ignored here WILL be committed by a checkpoint.
+# CPE334 grades the repo hygiene below — see its CLAUDE.md, "never commit .env,
+# credentials, node_modules, build output".
+# ---------------------------------------------------------------------------
+
+# Secrets. Never commit a real one; commit .env.example instead.
+.env
+.env.*
+!.env.example
+
+# Node / React / Vite / Express
+node_modules/
+dist/
+build/
+.vite/
+coverage/
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Python / Jupyter
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini

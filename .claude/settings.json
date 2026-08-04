@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(file:*)",
+      "Bash(wc:*)",
+      "Bash(pdftotext:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git show:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git remote -v)",
+      "Bash(python save-checkpoint.py)",
+      "Bash(python save-checkpoint.py --dry-run)",
+      "Bash(python save-checkpoint.py -n:*)"
+    ]
+  }
+}

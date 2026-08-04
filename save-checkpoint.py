@@ -10,10 +10,14 @@ script is stateless -- no counter file to lose or desync.
 
 Usage
 -----
-    python checkpoint.py                 # stage all + commit
-    python checkpoint.py -n "did lab 1"  # same, with a note in the commit body
-    python checkpoint.py --push          # commit, then push to origin
-    python checkpoint.py --dry-run       # show what would happen, change nothing
+    python save-checkpoint.py                 # stage all + commit
+    python save-checkpoint.py -n "did lab 1"  # same, with a note in the commit body
+    python save-checkpoint.py --push          # commit, then push to origin
+    python save-checkpoint.py --dry-run       # show what would happen, change nothing
+
+Git operations always target the repo root, so the commit covers the whole vault
+no matter where it is invoked from -- but Python still has to find the script, so
+from inside a class folder that means `python ../save-checkpoint.py`.
 """
 
 from __future__ import annotations

@@ -104,7 +104,9 @@ as collaborative, not order-taking:
 - `README.md` — public GitHub-facing pitch (repo: `kmutt-y3-s1`). Uses relative markdown links, not
   wiki-links, because GitHub renders `[[…]]` as dead text.
 - `PROBLEM.md` — my pain-point / roadmap list for the vault itself. Ignore unless I ask.
-- [[save-checkpoint.py]] — `python save-checkpoint.py` from anywhere in the vault stages everything
-  and commits as `<dd>/<mm>/<BE year>-<n>`. Add `--push` to also push. Run `--help` for flags.
+- [[save-checkpoint.py]] — `python save-checkpoint.py` stages the whole vault and commits as
+  `<dd>/<mm>/<BE year>-<n>`, whichever folder it's run from — though Python still needs the path, so
+  from inside a class folder that's `python ../save-checkpoint.py`. Add `--push` to also push. Run
+  `--help` for flags.
 - `format-template/` — copy-me starting point for a new class.
 - `.obsidian/` — vault config, don't hand-edit. `.claude/` — settings and slash commands.

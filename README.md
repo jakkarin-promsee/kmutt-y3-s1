@@ -127,6 +127,8 @@ cd kmutt-y3-s1
 claude
 ```
 
+**One setup step, once per machine.** In Obsidian: *Settings → Files and links → **Detect all file extensions*** — on. Without it Obsidian ignores `.pptx` and `.py` entirely, and any `[[link]]` to one renders perfectly while resolving to nothing. The setting lives in `.obsidian/`, which is gitignored, so every fresh clone starts with it off.
+
 ### Daily use (this is the entire workflow)
 
 **1. Drop the file where it belongs.**
@@ -237,33 +239,25 @@ flowchart LR
 
 Two rules do most of the heavy lifting. Each is stated in one line in [`CLAUDE.md`](CLAUDE.md), spelled out in full in a skill of its own — [`pdf-cache`](.claude/skills/pdf-cache/SKILL.md) and [`vault-writing`](.claude/skills/vault-writing/SKILL.md) — and applied automatically by [`/update-index`](.claude/commands/update-index.md).
 
+The summaries below are deliberately short. The skills are the source of truth; a README that restates them in full is a README that will quietly contradict them.
+
 ### 📜 Law I — The Reading Rule (never read a PDF twice)
 
-PDFs load as **images**. Reading one is expensive and lossy. So every PDF gets a permanent Markdown twin, generated once:
+PDFs load as **images**. Reading one is expensive and lossy, and the cost repeats every single session. So every deck gets a permanent Markdown twin, generated once and read forever after — cheaply with `pdftotext` when it's prose, or by a throwaway Sonnet subagent that transcribes the math into LaTeX when `pdftotext` would mangle it. The expensive page reads happen _inside the subagent_ and never touch the main thread's context. PowerPoint originals take one extra hop, since Obsidian can't render `.pptx`.
 
-1. **Is there a `<name>.md` next to `<name>.pdf`, at least as new?** → read that. Done. Free.
-2. **No?** Generate it, cheapest method first:
-   - `pdftotext -layout -enc UTF-8` — free, no model. Correct choice for prose (syllabi).
-   - **Formula-heavy, figure-heavy, or scanned?** `pdftotext` mangles the math and drops the figures. Dispatch a **Sonnet subagent** that reads the pages and writes a faithful transcript: every equation as LaTeX (`$…$` / `$$…$$`), every figure as one italic line. The expensive page reads happen _inside the subagent_ and never touch the main thread's context.
-3. **Record it in `INDEX.md`** on the source file's entry as `*(text cache: [[<name>]])*`.
-
-The cache is a **proxy, not a replacement** — if a task genuinely needs the visuals, read the PDF page directly.
+The cache is a **proxy, not a replacement** — if a task genuinely needs the visuals, read the page directly.
 
 > A `lecture/name.md` (machine transcript) and a `note/lecture1.md` (my own study note) are different artifacts and can both exist for the same deck. One is a photocopy, one is understanding.
 
+**Decision rules, exact commands, and the `INDEX.md` bookkeeping:** [`pdf-cache`](.claude/skills/pdf-cache/SKILL.md).
+
 ### 🔗 Law II — The Linking Rule (build a graph, not a pile)
 
-This is an [Obsidian](https://obsidian.md) vault, so every reference to a real file is a `[[wiki-link]]` — never dead text in backticks. Links survive renames, show up in backlinks, and turn the vault into a navigable graph instead of a folder of orphans.
+This is an [Obsidian](https://obsidian.md) vault, so every reference to a real file is a `[[wiki-link]]` — never dead text in backticks. Links survive renames, show up in backlinks, and turn the vault into a navigable graph instead of a folder of orphans. Folders, dot-directories, paths outside the vault, and `<placeholder>` patterns stay in backticks — they aren't files.
 
-| Target                       | Written as                                                                                   |
-| ---------------------------- | -------------------------------------------------------------------------------------------- |
-| A note or text cache (`.md`) | `[[Lecture1_IntroductionToOS]]` _(no extension)_                                             |
-| A PDF / PPTX / anything else | `[[Syllabus_CPE333.pdf]]` _(extension **required**)_                                         |
-| A PDF **and** its cache      | `[[Name.pdf]]` = source · `[[Name]]` = cache                                                 |
-| A heading inside a note      | `[[lecture1#Exam focus]]` _(literal heading text, not a slug)_                               |
-| A repeated basename          | `[[CPE342-machine-learning/INDEX\|INDEX.md]]` _(path-qualify or it silently resolves wrong)_ |
+What makes this a *law* rather than a style preference: a wiki-link Obsidian can't resolve still **looks** valid. Extensions, path-qualified basenames, literal heading anchors, and the file types Obsidian ignores unless told otherwise are each a way to write a link that renders fine and goes nowhere.
 
-**Not links:** folders, anything in `.claude/` or `.obsidian/`, paths outside the vault, and `<placeholder>` patterns. Those stay inline code.
+**Full syntax and every edge case:** [`vault-writing`](.claude/skills/vault-writing/SKILL.md).
 
 > **This README is the one deliberate exception.** It uses relative Markdown links, because GitHub renders `[[…]]` as literal dead text. Relative links work in both GitHub _and_ Obsidian.
 
@@ -271,7 +265,7 @@ This is an [Obsidian](https://obsidian.md) vault, so every reference to a real f
 
 ## Commands & Skills
 
-The first two are [**the core**](#-the-two-commands) — everything else is optional garnish.
+The first two are [**the core**](#the-two-main-commands) — everything else is optional garnish.
 
 |      | Name                            | Scope                                                                                    | What it does                                                                                                                                                                                                                                         |
 | ---- | ------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

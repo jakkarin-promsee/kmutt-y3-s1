@@ -1,6 +1,6 @@
 ---
 name: pdf-cache
-description: Read the Markdown cache, never the PDF itself. Load before opening ANY .pdf in this coursework vault — lecture slides, syllabi, assignment briefs. Covers checking for an existing <name>.md sibling cache, generating one when it's missing or stale (pdftotext for prose, a Sonnet subagent for decks with math or figures), and recording it on the source file's INDEX.md entry. Use whenever a task would otherwise mean reading PDF pages directly.
+description: Read the Markdown cache, never the PDF itself. Load before opening ANY .pdf or .pptx in this coursework vault — lecture slides, syllabi, assignment briefs. Covers checking for an existing <name>.md sibling cache, generating one when it's missing or stale (pdftotext for prose, a Sonnet subagent for decks with math or figures), the extra hop for PowerPoint originals (.pptx → reading-copy .pdf → .md), and recording it on the original's INDEX.md entry. Use whenever a task would otherwise mean reading PDF or slide pages directly.
 ---
 
 # PDF → Markdown caching
@@ -16,6 +16,37 @@ So every PDF in this vault gets a permanent Markdown twin, generated once and re
 least as new as the PDF, read the `.md` — not the PDF. Stop there.
 
 Only if it's **missing or older than the PDF** do you generate it.
+
+---
+
+## When the lecturer's original is a `.pptx`
+
+Some classes (CPE333) hand out **PowerPoint**, not PDF. Obsidian can't render `.pptx` and
+`pdftotext` can't read it, so those decks go through one extra hop. The chain is three files sharing
+one basename in one folder:
+
+| File | What it is | Who made it |
+| --- | --- | --- |
+| `<name>.pptx` | the lecturer's original — **keep it, it's the source of truth** | lecturer |
+| `<name>.pdf` | a reading copy, so the deck opens inside Obsidian | the user, by hand (PowerPoint → Save as PDF) |
+| `<name>.md` | the text cache, generated from the PDF exactly as above | this skill |
+
+**If the `.pdf` is missing:** don't try to parse the `.pptx` with `pdftotext`, and don't convert it
+silently — the export is the user's call, and there's no LibreOffice on this machine to do it
+headlessly. Ask them to export it. If the text is needed *right now* and no PDF exists, the global
+`pptx` skill can read the deck directly; that's a one-off, not a replacement for the chain.
+
+**In `INDEX.md`, the bullet belongs to the `.pptx`** — the original. The PDF and the cache are both
+derivatives, so they hang off that one entry and never get bullets of their own:
+
+```markdown
+- [[Lecture1_IntroductionToOS.pptx]] — **Week 1**: Introduction to Operating Systems (15 slides). …
+  *(reading copy: [[Lecture1_IntroductionToOS.pdf]] — my own PowerPoint→PDF export, because Obsidian
+  can't render `.pptx`. Text cache: [[Lecture1_IntroductionToOS]], made from that PDF.)*
+```
+
+A `[[…pptx]]` link only resolves with **Detect all file extensions** enabled — see the
+`vault-writing` skill.
 
 ---
 
@@ -52,9 +83,10 @@ the subagent.
 
 ## After generating
 
-1. **Record it in `INDEX.md`** on the source file's own entry, as `*(text cache: [[<name>]])*`. It
-   never gets a bullet of its own — the cache belongs to the PDF. A `.md` with **no** sibling PDF
-   (a real note in `note/`) *is* its own entry.
+1. **Record it in `INDEX.md`** on the original's own entry, as `*(text cache: [[<name>]])*`. It
+   never gets a bullet of its own — the cache belongs to the file it came from, and so does any
+   reading-copy PDF exported from a `.pptx`. A `.md` with **no** sibling source file (a real note in
+   `note/`) *is* its own entry.
 2. **Never** cache, list, or document anything under `temp/`.
 
 ---

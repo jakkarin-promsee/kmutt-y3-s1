@@ -1,0 +1,243 @@
+{
+  "main": {
+    "id": "c17836d1f9497b33",
+    "type": "split",
+    "children": [
+      {
+        "id": "4c403aa24a5787c5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "33d0d64e26b4b5e0",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "CPE334-software-engineering/lecture/Lecture+1+-+Introduction.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Lecture+1+-+Introduction"
+            }
+          },
+          {
+            "id": "6810a1b092c2bd8f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "CLAUDE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "CLAUDE"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b0168c1e3ec9681f",
+    "type": "split",
+    "children": [
+      {
+        "id": "77517a2f654b4ebc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2494b874b70faa72",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "45ee1eb8a816a07e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "f48fd9974a02141f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "61c4c40fee427b82",
+    "type": "split",
+    "children": [
+      {
+        "id": "536520c982cb43a4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3287e43999c8701b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "CPE342-machine-learning/lecture/Lecture+1+-+Introduction+to+ML.pdf",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "0108dbf0933bce8a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "CPE342-machine-learning/lecture/Lecture+1+-+Introduction+to+ML.pdf",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "5cdbb0fdf77403d1",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "57f47d3edf48fd12",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "63011603d24f826e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "CPE342-machine-learning/lecture/Lecture+1+-+Introduction+to+ML.pdf",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "6810a1b092c2bd8f",
+  "lastOpenFiles": [
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.pdf",
+    "CLAUDE.md.tmp.8260.f1ddcd4037c7",
+    "README.md.tmp.8260.9239fd7cba73",
+    "CONVENTIONS.md",
+    "README.md.tmp.35432.2e1452812f28",
+    "README.md.tmp.35432.42df31c9cece",
+    "save-checkpoint.py",
+    "checkpoint.py.tmp.35432.eafcb7c34f6f",
+    "checkpoint.py",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.md",
+    "CPE334-software-engineering/lecture/Lecture+1+-+Introduction.pdf",
+    "CPE334-software-engineering/lecture/Lecture+1+-+Introduction.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Git_GitHub_CheatSheet.pdf",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Glossary.pdf",
+    "README.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Git_GitHub_CheatSheet.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Glossary.md",
+    "PROBLEM.md",
+    "CLAUDE.md",
+    "format-template/CLAUDE.md",
+    "format-template/INDEX.md",
+    "CPE342-machine-learning/CLAUDE.md",
+    "CPE334-software-engineering/CLAUDE.md",
+    "CPE333-operating-systems/CLAUDE.md",
+    "CPE333-operating-systems/INDEX.md",
+    "CPE334-software-engineering/lecture/CPE334_Syllabus_1-2026.md",
+    "CPE334-software-engineering/INDEX.md",
+    "2026-08-04.md",
+    "CPE333-operating-systems/lecture/Lecture1_IntroductionToOS.md",
+    "PROBLEM.md.md",
+    "CPE333-operating-systems/lecture/Syllabus_CPE333.md",
+    "CPE342-machine-learning/lecture/CPE342+Syllabus.md",
+    "format-template - Copy/INDEX.md",
+    "format-template - Copy/CLAUDE.md",
+    "CPE342-machine-learning/lecture/Lecture+1+-+Introduction+to+ML.md",
+    "CPE342-machine-learning/note/lecture1.md"
+  ]
+}

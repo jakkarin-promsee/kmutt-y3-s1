@@ -23,7 +23,8 @@ removed. **Do not list `temp/`** — it's volatile.
   OS design goals (abstraction, performance, isolation, reliability, energy, security, mobility);
   and a history run — mainframe libraries → user/kernel mode + system calls → multiprogramming on
   minicomputers → UNIX & C → DOS/Mac OS/Windows NT/Mac OS X.
-  *(text cache: [[Lecture1_IntroductionToOS]])*
+  *(reading copy: [[Lecture1_IntroductionToOS.pdf]] — my own PowerPoint→PDF export, because Obsidian
+  can't render `.pptx`. Text cache: [[Lecture1_IntroductionToOS]], made from that PDF.)*
 
 ## note/
 

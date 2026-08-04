@@ -27,6 +27,18 @@ backlinks and the graph, and re-points itself when the file is renamed inside Ob
 | A nicer label | `[[Lecture+1+-+Introduction.pdf\|Lecture 1 — Introduction]]` | `\|` separates link from display text |
 | Show it inline | `![[Syllabus_CPE333.pdf#page=3]]` | leading `!` embeds instead of links |
 
+### The extension has to be one Obsidian *recognizes*
+
+Writing the extension isn't enough on its own. Out of the box Obsidian only indexes `.md`, `.pdf`,
+`.canvas`, and common image/audio/video types — **`.pptx`, `.py`, `.docx` and `.xlsx` are invisible
+to it**, so `[[Lecture1_IntroductionToOS.pptx]]` and `[[save-checkpoint.py]]` render as links and
+resolve to nothing. Exactly the silent failure this skill exists to prevent.
+
+**This vault requires *Settings → Files and links → Detect all file extensions* to be ON.** It
+writes `showUnsupportedFiles: true` into `.obsidian/app.json`, which is machine-local and gitignored
+— so it's **one click per machine**, and a fresh clone starts with it off. Never hand-edit
+`.obsidian/`; Obsidian holds that config in memory and overwrites the file when it exits.
+
 ### Not links — keep these as inline code
 
 - **Folders** — `assignment/`, `lecture/`, `note/`, `temp/`, `format-template/`. Obsidian links
