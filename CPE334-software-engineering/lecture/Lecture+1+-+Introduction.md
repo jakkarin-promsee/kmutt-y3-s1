@@ -1,6 +1,6 @@
 # Lecture 1 - Introduction — CPE334 Software Engineering (in the Age of AI Coding Agents)
 
-> Text cache of `Lecture+1+-+Introduction.pdf`. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
+> Text cache of [[Lecture+1+-+Introduction.pdf]]. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
 
 ## Slide 1 — Lecture 1 - Introduction
 

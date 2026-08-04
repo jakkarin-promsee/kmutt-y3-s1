@@ -1,8 +1,12 @@
 # <CODE> — <Course Name>
 
 Per-class instructions for Claude. **Copy `format-template/` to a new `<CODE>-<name>/` folder and
-fill in every `<...>` below.** Read this file (then `INDEX.md`) before working on anything in this
-class. For vault-wide rules, see the root `../CLAUDE.md`.
+fill in every `<...>` below.** The two `INDEX.md` mentions are placeholders in backticks — once the
+folder exists, turn each into a real wiki-link per the **Linking Rule**, i.e.
+`` `<CODE>-<name>/INDEX` `` → `[[CPE999-example/INDEX|INDEX.md]]`.
+
+Read this file (then `<CODE>-<name>/INDEX` → `INDEX.md`) before working on anything in this class.
+For vault-wide rules, see the root [CLAUDE.md](../CLAUDE.md).
 
 ## Course info
 
@@ -15,13 +19,14 @@ class. For vault-wide rules, see the root `../CLAUDE.md`.
 
 ## Folder layout
 
-Same as every class (see root `CLAUDE.md`):
+Same as every class (see root [CLAUDE.md](../CLAUDE.md)):
 
 - `assignment/` — assignment briefs, my working files, submissions
 - `lecture/` — slides / PDFs / readings from the lecturer
 - `note/` — my own notes worth keeping
 - `temp/` — scratch; volatile, **never documented**
-- `INDEX.md` — annotated map of this folder
+- `<CODE>-<name>/INDEX` — annotated map of this folder *(make this a wiki-link when you fill in the
+  folder name)*
 
 ## Class-specific notes
 

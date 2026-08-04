@@ -2,7 +2,8 @@
 course: CPE342 Machine Learning
 lecture: 1
 title: Introduction to ML & Statistical Learning
-source: lecture/Lecture+1+-+Introduction+to+ML.pdf (83 slides)
+source: "[[Lecture+1+-+Introduction+to+ML.pdf]]"
+source_slides: 83
 topics: [statistical-learning, bayes-classifier, LDA, QDA, evaluation-metrics]
 tags: [cpe342, machine-learning, note]
 ---
@@ -15,11 +16,11 @@ tags: [cpe342, machine-learning, note]
 > analysis (LDA/QDA)**. The glue holding it together is Mitchell's **Task / Performance / Experience
 > (T–P–E)** definition of learning. Keep that lens in mind and the 83 slides fall into place.
 
-**Sections:** [§1 Statistical Learning](#1--statistical-learning) ·
-[§2 Bayes' Classifier](#2--bayes-classifier) ·
-[§3 Discriminant Analysis (LDA/QDA)](#3--discriminant-analysis-ldaqda) ·
-[Evaluation metrics](#evaluation-metrics-classification) ·
-[Formula cheat-sheet](#formula-cheat-sheet) · [Exam focus](#exam-focus) · [Errata](#errata-in-the-slides)
+**Sections:** [[#§1 — Statistical Learning|§1 Statistical Learning]] ·
+[[#§2 — Bayes' Classifier|§2 Bayes' Classifier]] ·
+[[#§3 — Discriminant Analysis (LDA/QDA)|§3 Discriminant Analysis (LDA/QDA)]] ·
+[[#Evaluation metrics (classification)|Evaluation metrics]] ·
+[[#Formula cheat-sheet]] · [[#Exam focus]] · [[#Errata in the slides|Errata]]
 
 ---
 
@@ -223,5 +224,6 @@ From the **confusion matrix** (TP, FP, FN, TN):
 - **Géron** — *Hands-On Machine Learning with Scikit-Learn & TensorFlow* (O'Reilly, 2019).
 
 > [!note] Source
-> Summarized from `lecture/Lecture+1+-+Introduction+to+ML.pdf` (83 slides). See
-> [[CLAUDE]] for course info and the instructor/semester flags.
+> Summarized from [[Lecture+1+-+Introduction+to+ML.pdf]] (83 slides); text cache:
+> [[Lecture+1+-+Introduction+to+ML]]. See [[CPE342-machine-learning/CLAUDE|CPE342 CLAUDE.md]] for
+> course info and the instructor/semester flags.

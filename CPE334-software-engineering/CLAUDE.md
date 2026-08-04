@@ -1,7 +1,8 @@
 # CPE334 — Introduction to Software Engineering in the Age of AI Agents
 
-Per-class instructions for Claude. Read this file (then `INDEX.md`) before working on anything in
-this class. For vault-wide rules, see the root `../CLAUDE.md`.
+Per-class instructions for Claude. Read this file (then
+[[CPE334-software-engineering/INDEX|INDEX.md]]) before working on anything in this class. For
+vault-wide rules, see the root [CLAUDE.md](../CLAUDE.md).
 
 ## Course info
 
@@ -19,13 +20,13 @@ this class. For vault-wide rules, see the root `../CLAUDE.md`.
 
 ## Folder layout
 
-Same as every class (see root `CLAUDE.md`):
+Same as every class (see root [CLAUDE.md](../CLAUDE.md)):
 
 - `assignment/` — assignment briefs, my working files, submissions
 - `lecture/` — slides / PDFs / readings from the lecturer
 - `note/` — my own notes worth keeping
 - `temp/` — scratch; volatile, **never documented**
-- `INDEX.md` — annotated map of this folder
+- [[CPE334-software-engineering/INDEX|INDEX.md]] — annotated map of this folder
 
 ## Class-specific notes
 

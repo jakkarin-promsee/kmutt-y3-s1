@@ -1,6 +1,6 @@
 # Lecture 1 — Introduction to ML (text cache)
 
-> Auto-generated Markdown cache of `Lecture+1+-+Introduction+to+ML.pdf` (83 slides). Formulas transcribed as LaTeX; figures described in italics. This is a lossy proxy — open the PDF for exact figures and layout.
+> Auto-generated Markdown cache of [[Lecture+1+-+Introduction+to+ML.pdf]] (83 slides). Formulas transcribed as LaTeX; figures described in italics. This is a lossy proxy — open the PDF for exact figures and layout.
 
 ## Slide 1 — Machine Learning
 

@@ -1,6 +1,6 @@
 # CPE334 Course Syllabus — Introduction to Software Engineering in the Age of AI Agents
 
-> Text cache of `CPE334_Syllabus_1-2026.pdf`. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
+> Text cache of [[CPE334_Syllabus_1-2026.pdf]]. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
 
 ## Page 1 — Course Syllabus
 

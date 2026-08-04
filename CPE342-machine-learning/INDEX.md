@@ -4,6 +4,8 @@ Annotated map of this class folder, so an agent (and I) can understand it **with
 file**. Update when files are added/renamed/removed. `temp/` is not listed (volatile).
 
 > Filenames use `+` for spaces (downloaded as-is from LEB2). Readable titles are given below.
+> Links are Obsidian wiki-links (see the **Linking Rule** in the root [CLAUDE.md](../CLAUDE.md)):
+> `[[Name.pdf]]` is the source file, `[[Name]]` is its Markdown text cache.
 
 ## assignment/
 
@@ -11,16 +13,17 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
 
 ## lecture/
 
-- **`CPE342+Syllabus.pdf`** — *Course syllabus* (2 pp). Course info (Fri 13:30–17:30, CB2506, 3
+- **[[CPE342+Syllabus.pdf]]** — *Course syllabus* (2 pp). Course info (Fri 13:30–17:30, CB2506, 3
   credits), instructor Dr. Boonyarit Changaival, CLOs, grading (Midterm 30 / Final 35 / HW 35),
   grade scale, key references (ISLP 2023; Géron 2019), and class policies (1-week deadlines on
-  LEB2, academic integrity). Source of truth for course facts — see `CLAUDE.md`.
-  *(Text cache: `CPE342+Syllabus.md` — regenerated 2026-08-04 by a Sonnet subagent reading the
+  LEB2, academic integrity). Source of truth for course facts — see
+  [[CPE342-machine-learning/CLAUDE|CLAUDE.md]].
+  *(Text cache: [[CPE342+Syllabus]] — regenerated 2026-08-04 by a Sonnet subagent reading the
   pages; grading and grade-scale tables come through as real Markdown tables.)*
 
-- **`Lecture+1+-+Introduction+to+ML.pdf`** — *Lecture 1: Introduction to ML; Statistical Learning
+- **[[Lecture+1+-+Introduction+to+ML.pdf]]** — *Lecture 1: Introduction to ML; Statistical Learning
   concepts; Bayes' Classifier; LDA & QDA* (83 slides, by Asst. Prof. Dr. Santitham Prom-on).
-  *(Text cache: `Lecture+1+-+Introduction+to+ML.md` — full LaTeX transcription via a Sonnet
+  *(Text cache: [[Lecture+1+-+Introduction+to+ML]] — full LaTeX transcription via a Sonnet
   subagent, because `pdftotext` can't handle the formulas.)*
   Three sections:
   - **§1 Intro & Statistical Learning** — what ML is / why it matters; AI⊃ML⊃DL; ML timeline;
@@ -40,7 +43,8 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
 
 ## note/
 
-- **`lecture1.md`** — *My study note for Lecture 1* (Introduction to ML & Statistical Learning).
+- **[[CPE342-machine-learning/note/lecture1|lecture1.md]]** — *My study note for Lecture 1*
+  (Introduction to ML & Statistical Learning).
   Exam-ready summary of all 83 slides: §1 statistical learning (T–P–E, `Y=f(X)+ε`, linear
   regression, under/overfitting), §2 Bayes' classifier & spam filter, §3 LDA/QDA, evaluation
   metrics, a formula cheat-sheet, exam-focus list, and slide errata. Obsidian-formatted (math +

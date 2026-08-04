@@ -1,1 +1,6 @@
+# Obsidian vault config — machine-local
 .obsidian/
+
+# Scratch folders: volatile by design, never documented, never committed.
+# See the root CLAUDE.md — "temp/ is volatile".
+temp/

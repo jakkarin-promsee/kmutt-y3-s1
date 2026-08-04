@@ -1,3 +1,5 @@
+> Text cache of [[Lab1_Git_GitHub_CheatSheet.pdf]]. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
+
 CPE334 — Lab 1 · Git & GitHub Cheat Sheet
 
 TokTickIT · everything you need for the Lab 1 workflow · keep this open beside your editor

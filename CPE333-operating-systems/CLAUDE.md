@@ -1,7 +1,8 @@
 # CPE333 — Operating Systems
 
-Per-class instructions for Claude. Read this file (then `INDEX.md`) before working on anything in
-this class. For vault-wide rules, see the root `../CLAUDE.md`.
+Per-class instructions for Claude. Read this file (then [[CPE333-operating-systems/INDEX|INDEX.md]])
+before working on anything in this class. For vault-wide rules, see the root
+[CLAUDE.md](../CLAUDE.md).
 
 ## Course info
 
@@ -16,13 +17,13 @@ this class. For vault-wide rules, see the root `../CLAUDE.md`.
 
 ## Folder layout
 
-Same as every class (see root `CLAUDE.md`):
+Same as every class (see root [CLAUDE.md](../CLAUDE.md)):
 
 - `assignment/` — assignment briefs, my working files, submissions
 - `lecture/` — slides / PDFs / readings from the lecturer
 - `note/` — my own notes worth keeping
 - `temp/` — scratch; volatile, **never documented**
-- `INDEX.md` — annotated map of this folder
+- [[CPE333-operating-systems/INDEX|INDEX.md]] — annotated map of this folder
 
 ## Class-specific notes
 
@@ -44,7 +45,7 @@ code for this class, default to **C** (POSIX), not Python.
 | **C** | Part III — **Persistence** | 12–13 | I/O devices & mass storage, file systems & implementation | **Final** |
 
 Week 1 is the intro (no module). Full week-by-week table lives in
-`lecture/Syllabus_CPE333.md` — read that rather than the PDF.
+[[Syllabus_CPE333]] — read that cache rather than the PDF.
 
 > The three parts are literally the *three easy pieces* of the OSTEP textbook — virtualization,
 > concurrency, persistence. So the course follows OSTEP's structure directly: when I'm stuck on a

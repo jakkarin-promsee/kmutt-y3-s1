@@ -1,7 +1,8 @@
 # CPE342 — Machine Learning
 
-Per-class instructions for Claude. Read this (then `INDEX.md`) before working on anything in this
-class. For vault-wide rules, see the root `../CLAUDE.md`.
+Per-class instructions for Claude. Read this (then [[CPE342-machine-learning/INDEX|INDEX.md]])
+before working on anything in this class. For vault-wide rules, see the root
+[CLAUDE.md](../CLAUDE.md).
 
 ## Course info
 

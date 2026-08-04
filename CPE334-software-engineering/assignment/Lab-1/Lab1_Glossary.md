@@ -1,3 +1,5 @@
+> Text cache of [[Lab1_Glossary.pdf]]. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
+
 Appendix — Glossary of Key Terms
 
 New vocabulary appears fast in Lab 1. Use this table as a quick reference while you work; each term is also

@@ -1,6 +1,6 @@
 # CPE333 — Operating Systems Course Syllabus
 
-> Text cache of `Syllabus_CPE333.pdf`. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
+> Text cache of [[Syllabus_CPE333.pdf]]. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
 
 ## Page 1 — Course Information
 

@@ -1,6 +1,6 @@
 # CPE342 Syllabus
 
-> Text cache of `CPE342+Syllabus.pdf`. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
+> Text cache of [[CPE342+Syllabus.pdf]]. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
 
 ## Page 1 — CPE342 Syllabus
 

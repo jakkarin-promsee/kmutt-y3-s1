@@ -6,7 +6,7 @@ allowed-tools: Bash(find:*), Bash(ls:*), Bash(pdftotext:*), Read, Edit, Write, G
 
 You are running the **`/update-index`** maintenance command for this Obsidian coursework vault.
 Read the root `CLAUDE.md` first for the conventions (folder layout, naming, the **Reading Rule**,
-"never document `temp/`", read order).
+the **Linking Rule**, "never document `temp/`", read order).
 
 ## Target folder
 
@@ -43,9 +43,17 @@ Read the root `CLAUDE.md` first for the conventions (folder layout, naming, the 
    - In INDEX but no longer on disk → remove the entry.
    - Moved between `assignment/` `lecture/` `note/` → move its entry to the right section.
    - **A PDF's cache is not its own entry.** A `<name>.md` sitting next to a `<name>.pdf` of the same
-     basename is that PDF's text cache: note it on the PDF's entry as "*(text cache: `<name>.md`)*",
+     basename is that PDF's text cache: note it on the PDF's entry as "*(text cache: `[[<name>]]`)*",
      don't give it a separate bullet. A `.md` with **no** sibling PDF (e.g. a note in `note/`) *is*
      its own entry.
+   - **Every entry is a wiki-link, per the Linking Rule** — `[[Name.pdf]]` for the source file,
+     `[[Name]]` for its `.md` cache, path-qualified (`[[<CODE>-<name>/INDEX|INDEX.md]]`) for any
+     basename that repeats across classes. Never a bare `` `path` `` in backticks.
+
+4b. **Check the links resolve.** Every `[[target]]` you write or leave in `$1/INDEX.md` and
+   `$1/CLAUDE.md` must match a real file: `[[Name]]` needs `Name.md` on disk, `[[Name.pdf]]` needs
+   `Name.pdf`. Fix any link left dangling by a rename or deletion. Links into `.claude/` or
+   `.obsidian/`, to folders, or to `<placeholder>` patterns are wrong — those stay inline code.
 
 5. **Update `$1/CLAUDE.md` only if course facts or structure changed** (new grading info, a rename,
    a new subfolder). Smallest correct edit — don't rewrite otherwise.

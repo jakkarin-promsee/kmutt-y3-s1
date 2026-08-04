@@ -1,6 +1,6 @@
 # Lecture 1 — Introduction to Operating Systems
 
-> Text cache of `Lecture1_IntroductionToOS.pptx`. Auto-generated transcription — layout and some figure detail are lost. Read the source deck directly if visuals matter.
+> Text cache of [[Lecture1_IntroductionToOS.pptx]]. Auto-generated transcription — layout and some figure detail are lost. Read the source deck directly if visuals matter.
 
 ## Slide 1 — Lecture 1: Introduction to Operating System
 

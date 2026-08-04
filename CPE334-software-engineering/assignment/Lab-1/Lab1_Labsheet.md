@@ -1,3 +1,5 @@
+> Text cache of [[Lab1_Labsheet.pdf]]. Auto-generated transcription — layout and some figure detail are lost. Read the PDF directly if visuals matter.
+
       CPE 334 Introduction to Software Engineering in the Age of AI Agents
 
       Sections 1, 2, HS, 31 and 32. Semester: 1/2026.
