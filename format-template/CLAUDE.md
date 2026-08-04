@@ -1,0 +1,30 @@
+# <CODE> — <Course Name>
+
+Per-class instructions for Claude. **Copy `format-template/` to a new `<CODE>-<name>/` folder and
+fill in every `<...>` below.** Read this file (then `INDEX.md`) before working on anything in this
+class. For vault-wide rules, see the root `../CLAUDE.md`.
+
+## Course info
+
+- **Code:** <CODE>
+- **Name:** <full course name>
+- **Instructor:** <name / unknown>
+- **Semester:** <e.g. Semester 1, 2026>
+- **Credits / schedule:** <optional — e.g. 3 credits, Mon 13:00–16:00>
+- **Grading:** <optional — e.g. Midterm 30% / Final 30% / Assignments 30% / Attendance 10%>
+
+## Folder layout
+
+Same as every class (see root `CLAUDE.md`):
+
+- `assignment/` — assignment briefs, my working files, submissions
+- `lecture/` — slides / PDFs / readings from the lecturer
+- `note/` — my own notes worth keeping
+- `temp/` — scratch; volatile, **never documented**
+- `INDEX.md` — annotated map of this folder
+
+## Class-specific notes
+
+<Anything an agent should know before helping with this class. Examples:
+tools / languages used (Python, scikit-learn, …); coding style expected; how the lecturer wants
+submissions formatted; recurring quirks; textbook.>
