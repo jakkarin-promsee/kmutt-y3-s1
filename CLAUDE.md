@@ -218,6 +218,7 @@ the first time. Treat every task as collaborative, not just order-taking:
   GitHub renders `[[…]]` as literal dead text. Relative links work in both GitHub and Obsidian.
 - `PROBLEM.md` — my running pain-point / issue list for the vault itself. Agents ignore it unless
   I ask for help with it.
+- [[save-checkpoint.py]] — the checkpoint-commit helper (see **Tooling & roadmap** below).
 - `format-template/` — the copy-me starting point for a new class (contains blank `CLAUDE.md` +
   `INDEX.md`).
 - `<CODE>-<name>/` — one folder per class (see table).
@@ -237,6 +238,13 @@ vault-level tool or agent config is added here later, document its path and purp
   class folder, **convert any un-cached PDF to Markdown** (per the Reading Rule), diff the folder
   against its `INDEX.md` + `CLAUDE.md`, and update both to match reality (plus the Classes table for
   a new/renamed folder). The **Maintenance rules** + **Reading Rule** above are the manual version.
+- **[[save-checkpoint.py]]** — `python save-checkpoint.py` from anywhere in the vault stages everything
+  (`git add -A` at the repo root), commits as `<dd>/<mm>/<BE year>-<n>` (e.g. `04/08/2569-3`), and
+  **pushes** — the whole point is one command, so push is the default, not a flag.
+  `n` restarts at 1 each day and is derived from `git log`, so there is no counter file to desync.
+  Flags: `-n "note"` puts free text in the commit **body** so the subject stays pure format,
+  `-c` / `--commit` commits but stays local, `--dry-run` shows the plan without touching anything.
+  A failed push is reported as a warning — the commit is already safe locally.
 
 **Ideas — not built yet:**
 

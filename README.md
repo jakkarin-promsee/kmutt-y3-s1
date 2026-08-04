@@ -31,6 +31,66 @@ The user's entire job is **step one of a two-step pipeline**: put the file in th
 
 ---
 
+## ⭐ The Two Commands
+
+**Everything else in this repo is scaffolding. These two commands are the product.**
+
+They attack the same enemy — **drift** — on two different axes. I am a person who dumps files into folders and forgets, who works for three hours straight and never commits. Neither command asks me to stop being that person. They just make catching up cost one keystroke instead of a chore I'll skip.
+
+|     | Command                          | Keeps in sync                                | The question it kills               |
+| --- | -------------------------------- | -------------------------------------------- | ----------------------------------- |
+| 🧠  | **`/update-index [folder]`**     | What the **agent** knows ⟷ what's on disk    | _"Does the AI see what I see?"_     |
+| 💾  | **`python save-checkpoint.py`**  | What **git** records ⟷ what I actually did   | _"Is today's work actually saved?"_ |
+
+```mermaid
+flowchart LR
+    H["🎓 I just... work<br/><i>dump PDFs, write notes, edit labs</i>"]
+    H --> D1["⚠️ The map goes stale<br/><i>agent can't see the new file</i>"]
+    H --> D2["⚠️ The history goes stale<br/><i>hours of work uncommitted</i>"]
+    D1 --> C1["🧠 <b>/update-index</b>"]
+    D2 --> C2["💾 <b>save-checkpoint.py</b>"]
+    C1 --> S["✅ Disk, docs, and history<br/>all describe the same reality"]
+    C2 --> S
+
+    style H fill:#1e40af,stroke:#93c5fd,color:#fff
+    style D1 fill:#7c2d12,stroke:#fdba74,color:#fff
+    style D2 fill:#7c2d12,stroke:#fdba74,color:#fff
+    style C1 fill:#3b2f63,stroke:#c4b5fd,color:#fff
+    style C2 fill:#3b2f63,stroke:#c4b5fd,color:#fff
+    style S fill:#14532d,stroke:#86efac,color:#fff
+```
+
+### 🧠 `/update-index [folder]` — so the agent sees what I see
+
+The ingest pipeline, and the reason this repo is cheap to talk to. It lists a class folder, finds every file the docs don't know about yet, converts each un-cached PDF to Markdown (cheapest method first, subagent only when the math demands it), rewrites `INDEX.md` and `CLAUDE.md` to match what's actually on disk, verifies every wiki-link still resolves, and leaves `temp/` untouched.
+
+It is **idempotent and self-healing**: run it any time, on anything. If nothing drifted, it costs nothing. If ten files drifted, one command fixes all ten. You never have to remember *whether* you need it — that's the point, because I won't.
+
+### 💾 `save-checkpoint.py` — so the work is never the thing I lose
+
+A semester vault doesn't need a branching model, a review process, or a commit message you agonize over. It needs **checkpoints**. So this is one command with no required arguments that stages the whole vault, commits it as `<dd>/<mm>/<BE year>-<n>` — Thai Buddhist Era, `n` auto-incrementing per day — and pushes.
+
+```bash
+python save-checkpoint.py                  # stage everything → commit → push
+python save-checkpoint.py -n "did lab 1"   # ...with a note in the commit body
+python save-checkpoint.py --commit         # commit only, stay local
+python save-checkpoint.py --dry-run        # show the plan, touch nothing
+```
+
+The number is derived by reading `git log`, not stored in a counter file, so there is nothing to desync across machines. It stages from the **repo root**, not the current directory, so running it from inside a class folder still saves the whole vault. And a failed push is reported as a warning, not a crash — the commit already exists locally, and telling you otherwise would make you redo work that was never lost.
+
+### Why they're one idea wearing two hats
+
+Both obey the same three-part contract, which is really the design philosophy of the whole repo:
+
+1. **Auto-find, never interrogate.** Neither command asks me what changed. They both go look. A tool that requires me to accurately describe my own mess is a tool that inherits my unreliability.
+2. **Hard compute once.** `/update-index` pays for the PDF read exactly once and caches it forever. `save-checkpoint.py` computes the commit number from history that already exists. Nothing expensive happens twice.
+3. **Friction is the only real failure mode.** A correct system I don't run is worth less than a decent system I run constantly. Both commands are one line, zero decisions, no ceremony — because the version that demanded thought is the version I'd abandon in nine days.
+
+Together they let me use this like a **real vault** — dump things in, work messily, stay human — while the agent still sees the exact same picture I do, with nothing wasted on either side.
+
+---
+
 ## How It Works
 
 ```mermaid
@@ -91,6 +151,14 @@ CPE342-machine-learning/lecture/Lecture+2+-+Regression.pdf
 
 The agent already read the course policies, the grading breakdown, the instructor's quirks, and every lecture you've ever added. You don't brief it. That's the point.
 
+**Then, when you stand up from the desk:**
+
+```bash
+python save-checkpoint.py
+```
+
+One line, no message to write, no branch to pick. Staged, committed as `04/08/2569-3`, pushed. The day is saved whether or not you were disciplined about it.
+
 ---
 
 ## Repository Layout
@@ -100,6 +168,7 @@ kmutt-y3-s1/
 ├── CLAUDE.md                    # 🧠 THE CONSTITUTION — vault-wide rules, read first, always
 ├── README.md                    # 📖 you are here
 ├── PROBLEM.md                   # 🐛 my running pain-point log for the system itself
+├── save-checkpoint.py           # ⭐ CORE — one-command checkpoint: add + commit + push
 │
 ├── format-template/             # 🧬 the seed — copy this to create a new class
 │   ├── CLAUDE.md                #    blank per-class instruction file
@@ -110,7 +179,7 @@ kmutt-y3-s1/
 ├── CPE342-machine-learning/     # 🟢
 │
 ├── .claude/                     # ⚙️  agent config
-│   ├── commands/update-index.md #    the ingest command
+│   ├── commands/update-index.md # ⭐ CORE — the ingest command
 │   └── settings.local.json      #    permissions
 └── .obsidian/                   # 🔗 vault config (gitignored — machine-local)
 ```
@@ -200,10 +269,13 @@ This is an [Obsidian](https://obsidian.md) vault, so every reference to a real f
 
 ## Commands & Skills
 
-|     | Name                         | Scope                                                                                    | What it does                                                                                                                                                                                                                                         |
-| --- | ---------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⚙️  | **`/update-index [folder]`** | 📦 in this repo — [`.claude/commands/update-index.md`](.claude/commands/update-index.md) | The ingest pipeline. Lists the folder, converts every un-cached PDF to Markdown (Law I), diffs disk against `INDEX.md`, rewrites both docs to match reality, verifies every wiki-link resolves, and updates the class table. Skips `temp/` entirely. |
-| 🕸️  | **`/graphify`**              | 🌐 global — `~/.claude/skills/graphify/`                                                 | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
+The first two are [**the core**](#-the-two-commands) — everything else is optional garnish.
+
+|     | Name                             | Scope                                                                                    | What it does                                                                                                                                                                                                                                         |
+| --- | -------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ⭐🧠 | **`/update-index [folder]`**     | 📦 in this repo — [`.claude/commands/update-index.md`](.claude/commands/update-index.md) | The ingest pipeline. Lists the folder, converts every un-cached PDF to Markdown (Law I), diffs disk against `INDEX.md`, rewrites both docs to match reality, verifies every wiki-link resolves, and updates the class table. Skips `temp/` entirely. |
+| ⭐💾 | **`python save-checkpoint.py`**  | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                             | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes. `-n` adds a body note, `--commit` stays local, `--dry-run` shows the plan.                   |
+| 🕸️  | **`/graphify`**                  | 🌐 global — `~/.claude/skills/graphify/`                                                 | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
 
 ### Starting a new class
 
@@ -225,8 +297,6 @@ Fill in the two files, then run `/update-index CPE999-example-class` and let the
 | GEN101     | Physical Education   | `GEN101-physical-education`                                  | ⚪ not created |
 | GEN241     | Beauty of Life       | `GEN241-beauty-of-life`                                      | ⚪ not created |
 | PRE380     | Engineering Economy  | `PRE380-engineering-economy`                                 | ⚪ not created |
-
-_Ingest coverage: **9 / 9** source PDFs have a current Markdown cache._
 
 ---
 
@@ -318,7 +388,8 @@ It makes my _questions_ cheaper, which means I ask more of them, which is probab
 - [x] Reading Rule — automatic PDF → Markdown caching, with subagent fallback for math
 - [x] Linking Rule — full wiki-link graph with dangling-link validation
 - [x] `format-template/` for zero-friction class creation
-- [x] `/update-index` — one-command drift correction
+- [x] `/update-index` — one-command drift correction for what the agent knows
+- [x] `save-checkpoint.py` — one-command drift correction for what git records
 - [ ] Better PDF conversion — library-assisted rather than everything on the subagent _(tracked in [`PROBLEM.md`](PROBLEM.md))_
 - [ ] Remaining three classes (GEN101, GEN241, PRE380)
 - [ ] Assignment-tracking layer — deadlines and status surfaced without opening each brief
