@@ -31,16 +31,16 @@ The user's entire job is **step one of a two-step pipeline**: put the file in th
 
 ---
 
-## ⭐ The Two Commands
+## The Two Main Commands
 
 **Everything else in this repo is scaffolding. These two commands are the product.**
 
 They attack the same enemy — **drift** — on two different axes. I am a person who dumps files into folders and forgets, who works for three hours straight and never commits. Neither command asks me to stop being that person. They just make catching up cost one keystroke instead of a chore I'll skip.
 
-|     | Command                          | Keeps in sync                                | The question it kills               |
-| --- | -------------------------------- | -------------------------------------------- | ----------------------------------- |
-| 🧠  | **`/update-index [folder]`**     | What the **agent** knows ⟷ what's on disk    | _"Does the AI see what I see?"_     |
-| 💾  | **`python save-checkpoint.py`**  | What **git** records ⟷ what I actually did   | _"Is today's work actually saved?"_ |
+|     | Command                         | Keeps in sync                              | The question it kills               |
+| --- | ------------------------------- | ------------------------------------------ | ----------------------------------- |
+| 🧠  | **`/update-index [folder]`**    | What the **agent** knows ⟷ what's on disk  | _"Does the AI see what I see?"_     |
+| 💾  | **`python save-checkpoint.py`** | What **git** records ⟷ what I actually did | _"Is today's work actually saved?"_ |
 
 ```mermaid
 flowchart LR
@@ -64,16 +64,16 @@ flowchart LR
 
 The ingest pipeline, and the reason this repo is cheap to talk to. It lists a class folder, finds every file the docs don't know about yet, converts each un-cached PDF to Markdown (cheapest method first, subagent only when the math demands it), rewrites `INDEX.md` and `CLAUDE.md` to match what's actually on disk, verifies every wiki-link still resolves, and leaves `temp/` untouched.
 
-It is **idempotent and self-healing**: run it any time, on anything. If nothing drifted, it costs nothing. If ten files drifted, one command fixes all ten. You never have to remember *whether* you need it — that's the point, because I won't.
+It is **idempotent and self-healing**: run it any time, on anything. If nothing drifted, it costs nothing. If ten files drifted, one command fixes all ten. You never have to remember _whether_ you need it — that's the point, because I won't.
 
 ### 💾 `save-checkpoint.py` — so the work is never the thing I lose
 
 A semester vault doesn't need a branching model, a review process, or a commit message you agonize over. It needs **checkpoints**. So this is one command with no required arguments that stages the whole vault, commits it as `<dd>/<mm>/<BE year>-<n>` — Thai Buddhist Era, `n` auto-incrementing per day — and pushes.
 
 ```bash
-python save-checkpoint.py                  # stage everything → commit → push
+python save-checkpoint.py                  # stage everything → commit
 python save-checkpoint.py -n "did lab 1"   # ...with a note in the commit body
-python save-checkpoint.py --commit         # commit only, stay local
+python save-checkpoint.py --push           # commit and push
 python save-checkpoint.py --dry-run        # show the plan, touch nothing
 ```
 
@@ -271,11 +271,11 @@ This is an [Obsidian](https://obsidian.md) vault, so every reference to a real f
 
 The first two are [**the core**](#-the-two-commands) — everything else is optional garnish.
 
-|     | Name                             | Scope                                                                                    | What it does                                                                                                                                                                                                                                         |
-| --- | -------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⭐🧠 | **`/update-index [folder]`**     | 📦 in this repo — [`.claude/commands/update-index.md`](.claude/commands/update-index.md) | The ingest pipeline. Lists the folder, converts every un-cached PDF to Markdown (Law I), diffs disk against `INDEX.md`, rewrites both docs to match reality, verifies every wiki-link resolves, and updates the class table. Skips `temp/` entirely. |
-| ⭐💾 | **`python save-checkpoint.py`**  | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                             | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes. `-n` adds a body note, `--commit` stays local, `--dry-run` shows the plan.                   |
-| 🕸️  | **`/graphify`**                  | 🌐 global — `~/.claude/skills/graphify/`                                                 | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
+|      | Name                            | Scope                                                                                    | What it does                                                                                                                                                                                                                                         |
+| ---- | ------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ⭐🧠 | **`/update-index [folder]`**    | 📦 in this repo — [`.claude/commands/update-index.md`](.claude/commands/update-index.md) | The ingest pipeline. Lists the folder, converts every un-cached PDF to Markdown (Law I), diffs disk against `INDEX.md`, rewrites both docs to match reality, verifies every wiki-link resolves, and updates the class table. Skips `temp/` entirely. |
+| ⭐💾 | **`python save-checkpoint.py`** | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                             | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes. `-n` adds a body note, `--commit` stays local, `--dry-run` shows the plan.                   |
+| 🕸️   | **`/graphify`**                 | 🌐 global — `~/.claude/skills/graphify/`                                                 | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
 
 ### Starting a new class
 
