@@ -4,7 +4,7 @@ Annotated map of this class folder, so an agent (and I) can understand it **with
 file**. Update when files are added/renamed/removed. `temp/` is not listed (volatile).
 
 > Filenames use `+` for spaces (downloaded as-is from LEB2). Readable titles are given below.
-> Links are Obsidian wiki-links (see the **Linking Rule** in the root [CLAUDE.md](../CLAUDE.md)):
+> Links are Obsidian wiki-links (full syntax and edge cases: the `vault-writing` skill):
 > `[[Name.pdf]]` is the source file, `[[Name]]` is its Markdown text cache.
 
 ## assignment/

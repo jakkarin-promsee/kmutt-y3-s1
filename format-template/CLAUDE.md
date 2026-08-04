@@ -2,7 +2,7 @@
 
 Per-class instructions for Claude. **Copy `format-template/` to a new `<CODE>-<name>/` folder and
 fill in every `<...>` below.** The two `INDEX.md` mentions are placeholders in backticks — once the
-folder exists, turn each into a real wiki-link per the **Linking Rule**, i.e.
+folder exists, turn each into a real wiki-link per the `vault-writing` skill, i.e.
 `` `<CODE>-<name>/INDEX` `` → `[[CPE999-example/INDEX|INDEX.md]]`.
 
 Read this file (then `<CODE>-<name>/INDEX` → `INDEX.md`) before working on anything in this class.

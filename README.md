@@ -180,6 +180,8 @@ kmutt-y3-s1/
 │
 ├── .claude/                     # ⚙️  agent config
 │   ├── commands/update-index.md # ⭐ CORE — the ingest command
+│   ├── skills/vault-writing/    # 📐 Law II — link syntax, formatting, prose wrap
+│   ├── skills/pdf-cache/        # 📄 Law I — PDF → Markdown, the cheap way
 │   └── settings.local.json      #    permissions
 └── .obsidian/                   # 🔗 vault config (gitignored — machine-local)
 ```
@@ -233,7 +235,7 @@ flowchart LR
 
 ## The Two Laws
 
-Two rules do most of the heavy lifting. Both are enforced by [`CLAUDE.md`](CLAUDE.md) and applied automatically by [`/update-index`](.claude/commands/update-index.md).
+Two rules do most of the heavy lifting. Each is stated in one line in [`CLAUDE.md`](CLAUDE.md), spelled out in full in a skill of its own — [`pdf-cache`](.claude/skills/pdf-cache/SKILL.md) and [`vault-writing`](.claude/skills/vault-writing/SKILL.md) — and applied automatically by [`/update-index`](.claude/commands/update-index.md).
 
 ### 📜 Law I — The Reading Rule (never read a PDF twice)
 
@@ -274,7 +276,9 @@ The first two are [**the core**](#-the-two-commands) — everything else is opti
 |      | Name                            | Scope                                                                                    | What it does                                                                                                                                                                                                                                         |
 | ---- | ------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ⭐🧠 | **`/update-index [folder]`**    | 📦 in this repo — [`.claude/commands/update-index.md`](.claude/commands/update-index.md) | The ingest pipeline. Lists the folder, converts every un-cached PDF to Markdown (Law I), diffs disk against `INDEX.md`, rewrites both docs to match reality, verifies every wiki-link resolves, and updates the class table. Skips `temp/` entirely. |
-| ⭐💾 | **`python save-checkpoint.py`** | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                             | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes. `-n` adds a body note, `--commit` stays local, `--dry-run` shows the plan.                   |
+| ⭐💾 | **`python save-checkpoint.py`** | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                             | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes when given `--push`. `-n` adds a body note, `--dry-run` shows the plan.                   |
+| 📐   | **`vault-writing`** (skill)     | 📦 in this repo — [`.claude/skills/vault-writing/`](.claude/skills/vault-writing/SKILL.md) | Law II in full. Wiki-link syntax and its edge cases, what must *not* be linked, the `<br/>` rule, and the never-reflow rule. Loads only when markdown is actually being written.                                                                     |
+| 📄   | **`pdf-cache`** (skill)         | 📦 in this repo — [`.claude/skills/pdf-cache/`](.claude/skills/pdf-cache/SKILL.md)       | Law I in full. Check for the cache, generate it with `pdftotext` or a Sonnet subagent, record it in `INDEX.md`. Loads only when a PDF is about to be opened.                                                                                        |
 | 🕸️   | **`/graphify`**                 | 🌐 global — `~/.claude/skills/graphify/`                                                 | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
 
 ### Starting a new class

@@ -5,8 +5,8 @@ allowed-tools: Bash(find:*), Bash(ls:*), Bash(pdftotext:*), Read, Edit, Write, G
 ---
 
 You are running the **`/update-index`** maintenance command for this Obsidian coursework vault.
-Read the root `CLAUDE.md` first for the conventions (folder layout, naming, the **Reading Rule**,
-the **Linking Rule**, "never document `temp/`", read order).
+Read the root `CLAUDE.md` first (folder layout, naming, "never document `temp/`", read order), then
+load the `pdf-cache` and `vault-writing` skills — they hold the procedures this command runs.
 
 ## Target folder
 
@@ -21,7 +21,7 @@ the **Linking Rule**, "never document `temp/`", read order).
 1. **List reality.** Recursively list the target's files, excluding `temp/` and dotfiles/dotdirs:
    `find "$1" -not -path '*/temp/*' -not -path '*/.*' -type f | sort`
 
-2. **Ensure every PDF has a fresh Markdown cache (Reading Rule).** For each `<name>.pdf` found
+2. **Ensure every PDF has a fresh Markdown cache (`pdf-cache` skill).** For each `<name>.pdf` found
    (outside `temp/`):
    - If `<name>.md` is **missing or older** than the PDF → (re)generate it:
      - `pdftotext -layout -enc UTF-8 "<name>.pdf" "<name>.md"` for text/prose PDFs (e.g. a syllabus).
@@ -46,7 +46,7 @@ the **Linking Rule**, "never document `temp/`", read order).
      basename is that PDF's text cache: note it on the PDF's entry as "*(text cache: `[[<name>]]`)*",
      don't give it a separate bullet. A `.md` with **no** sibling PDF (e.g. a note in `note/`) *is*
      its own entry.
-   - **Every entry is a wiki-link, per the Linking Rule** — `[[Name.pdf]]` for the source file,
+   - **Every entry is a wiki-link, per the `vault-writing` skill** — `[[Name.pdf]]` for the source file,
      `[[Name]]` for its `.md` cache, path-qualified (`[[<CODE>-<name>/INDEX|INDEX.md]]`) for any
      basename that repeats across classes. Never a bare `` `path` `` in backticks.
 
