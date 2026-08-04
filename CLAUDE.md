@@ -138,7 +138,7 @@ vault-level tool or agent config is added here later, document its path and purp
 
 **Built:**
 
-- **`/update-content [folder]`** — slash command at `.claude/commands/update-content.md`. `ls` a
+- **`/update-index [folder]`** — slash command at `.claude/commands/update-index.md`. `ls` a
   class folder, **convert any un-cached PDF to Markdown** (per the Reading Rule), diff the folder
   against its `INDEX.md` + `CLAUDE.md`, and update both to match reality (plus the Classes table for
   a new/renamed folder). The **Maintenance rules** + **Reading Rule** above are the manual version.
