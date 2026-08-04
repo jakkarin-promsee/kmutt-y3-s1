@@ -4,7 +4,7 @@ argument-hint: "[folder]  — e.g. CPE342-machine-learning; omit to use the clas
 allowed-tools: Bash(find:*), Bash(ls:*), Bash(pdftotext:*), Read, Edit, Write, Glob, Task
 ---
 
-You are running the **`/update-hierarchy`** maintenance command for this Obsidian coursework vault.
+You are running the **`/update-content`** maintenance command for this Obsidian coursework vault.
 Read the root `CLAUDE.md` first for the conventions (folder layout, naming, the **Reading Rule**,
 "never document `temp/`", read order).
 
