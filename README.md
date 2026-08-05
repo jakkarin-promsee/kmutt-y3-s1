@@ -127,7 +127,7 @@ cd kmutt-y3-s1
 claude
 ```
 
-**One setup step, once per machine.** In Obsidian: *Settings → Files and links → **Detect all file extensions*** — on. Without it Obsidian ignores `.pptx` and `.py` entirely, and any `[[link]]` to one renders perfectly while resolving to nothing. The setting lives in `.obsidian/`, which is gitignored, so every fresh clone starts with it off.
+**One setup step, once per machine.** In Obsidian: \*Settings → Files and links → **Detect all file extensions\*** — on. Without it Obsidian ignores `.pptx` and `.py` entirely, and any `[[link]]` to one renders perfectly while resolving to nothing. The setting lives in `.obsidian/`, which is gitignored, so every fresh clone starts with it off.
 
 ### Daily use (this is the entire workflow)
 
@@ -255,7 +255,7 @@ The cache is a **proxy, not a replacement** — if a task genuinely needs the vi
 
 This is an [Obsidian](https://obsidian.md) vault, so every reference to a real file is a `[[wiki-link]]` — never dead text in backticks. Links survive renames, show up in backlinks, and turn the vault into a navigable graph instead of a folder of orphans. Folders, dot-directories, paths outside the vault, and `<placeholder>` patterns stay in backticks — they aren't files.
 
-What makes this a *law* rather than a style preference: a wiki-link Obsidian can't resolve still **looks** valid. Extensions, path-qualified basenames, literal heading anchors, and the file types Obsidian ignores unless told otherwise are each a way to write a link that renders fine and goes nowhere.
+What makes this a _law_ rather than a style preference: a wiki-link Obsidian can't resolve still **looks** valid. Extensions, path-qualified basenames, literal heading anchors, and the file types Obsidian ignores unless told otherwise are each a way to write a link that renders fine and goes nowhere.
 
 **Full syntax and every edge case:** [`vault-writing`](.claude/skills/vault-writing/SKILL.md).
 
@@ -267,13 +267,13 @@ What makes this a *law* rather than a style preference: a wiki-link Obsidian can
 
 The first two are [**the core**](#the-two-main-commands) — everything else is optional garnish.
 
-|      | Name                            | Scope                                                                                    | What it does                                                                                                                                                                                                                                         |
-| ---- | ------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ⭐🧠 | **`/update-index [folder]`**    | 📦 in this repo — [`.claude/commands/update-index.md`](.claude/commands/update-index.md) | The ingest pipeline. Lists the folder, converts every un-cached PDF to Markdown (Law I), diffs disk against `INDEX.md`, rewrites both docs to match reality, verifies every wiki-link resolves, and updates the class table. Skips `temp/` entirely. |
-| ⭐💾 | **`python save-checkpoint.py`** | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                             | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes when given `--push`. `-n` adds a body note, `--dry-run` shows the plan.                   |
-| 📐   | **`vault-writing`** (skill)     | 📦 in this repo — [`.claude/skills/vault-writing/`](.claude/skills/vault-writing/SKILL.md) | Law II in full. Wiki-link syntax and its edge cases, what must *not* be linked, the `<br/>` rule, and the never-reflow rule. Loads only when markdown is actually being written.                                                                     |
-| 📄   | **`pdf-cache`** (skill)         | 📦 in this repo — [`.claude/skills/pdf-cache/`](.claude/skills/pdf-cache/SKILL.md)       | Law I in full. Check for the cache, generate it with `pdftotext` or a Sonnet subagent, record it in `INDEX.md`. Loads only when a PDF is about to be opened.                                                                                        |
-| 🕸️   | **`/graphify`**                 | 🌐 global — `~/.claude/skills/graphify/`                                                 | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
+|      | Name                            | Scope                                                                                      | What it does                                                                                                                                                                                                                                         |
+| ---- | ------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ⭐🧠 | **`/update-index [folder]`**    | 📦 in this repo — [`.claude/commands/update-index.md`](.claude/commands/update-index.md)   | The ingest pipeline. Lists the folder, converts every un-cached PDF to Markdown (Law I), diffs disk against `INDEX.md`, rewrites both docs to match reality, verifies every wiki-link resolves, and updates the class table. Skips `temp/` entirely. |
+| ⭐💾 | **`python save-checkpoint.py`** | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                               | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes when given `--push`. `-n` adds a body note, `--dry-run` shows the plan.                       |
+| 📐   | **`vault-writing`** (skill)     | 📦 in this repo — [`.claude/skills/vault-writing/`](.claude/skills/vault-writing/SKILL.md) | Law II in full. Wiki-link syntax and its edge cases, what must _not_ be linked, the `<br/>` rule, and the never-reflow rule. Loads only when markdown is actually being written.                                                                     |
+| 📄   | **`pdf-cache`** (skill)         | 📦 in this repo — [`.claude/skills/pdf-cache/`](.claude/skills/pdf-cache/SKILL.md)         | Law I in full. Check for the cache, generate it with `pdftotext` or a Sonnet subagent, record it in `INDEX.md`. Loads only when a PDF is about to be opened.                                                                                         |
+| 🕸️   | **`/graphify`**                 | 🌐 global — `~/.claude/skills/graphify/`                                                   | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
 
 ### Starting a new class
 
