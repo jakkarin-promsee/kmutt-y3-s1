@@ -30,6 +30,14 @@ removed. **Do not list `temp/`** — it's volatile.
   feature-branch workflow, opening and reviewing PRs, release PR to `main`, merge-conflict
   resolution, and common gotchas (HTTPS tokens, why PRs beat direct pushes).
   *(text cache: [[Lab1_Git_GitHub_CheatSheet]])*
+- [[Lab1_Guidance]] — **คู่มือเดินงาน Lab 1 ทีละก้าว** ของกูเอง แปลง labsheet เป็น 10 Phase
+  เรียงลำดับทำจริง: เตรียมเครื่อง/หาคู่รีวิว → repo + branch + collaborator → บอร์ด + Issue →
+  Issue #1–#4 ทีละอัน (คำสั่งติดตั้ง โค้ด Express/Prisma/React เทสต์ Supertest+Vitest พร้อม
+  คำอธิบายว่าทำไมเขียนแบบนั้น) → เอกสาร 4 ไฟล์ → release เข้า `main` → เก็บหลักฐาน + ประกอบ PDF
+  ส่ง · มี "หลักฐานที่ต้องเก็บ" ท้ายทุก Phase, Definition of Done ต่อ Issue, และตารางกับดัก
+- [[Lab1_Issue_Drafts]] — **ร่างเนื้อ GitHub Issue ทั้ง 4 อัน** ของกูเอง พร้อมก๊อปวางตอนกด New
+  issue: title + body (Type, branch, target, dependency, acceptance criteria แบบ checkbox ลอกจาก
+  labsheet §7 คำต่อคำ) + label ที่ควรสร้าง + แผนภาพลำดับ dependency ของ Issue 1–4
 
 ## lecture/
 
@@ -52,4 +60,8 @@ removed. **Do not list `temp/`** — it's volatile.
 
 ## note/
 
-- _none yet_
+- [[Git_GitHub_Workflow_Playbook]] — **คู่มือ Git/GitHub ของกูเอง** เขียนตอนเตรียม Lab 1 แต่ครอบคลุม
+  workflow ทั้งคอร์ส: โมเดลความคิด (git vs GitHub, 4 ที่ที่ไฟล์อยู่, branch คืออะไรจริง ๆ), setup
+  ครั้งเดียวจบ, สร้าง repo + collaborator + Project board + Issues, ลูปหลักต่อ 1 Issue (terminal
+  สลับกับเว็บทีละขั้น), peer review ทั้งสองทาง, release เข้า `main`, เช็คลิสต์หลักฐานส่ง Part 1,
+  ตารางแก้ปัญหาที่เจอบ่อย, merge conflict, และโปรเจกต์จริงในบริษัทต่างจากแล็บตรงไหน
