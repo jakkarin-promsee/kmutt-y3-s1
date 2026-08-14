@@ -148,4 +148,17 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
 
 ## note/
 
-- _none yet_
+- **[[PRE380-engineering-economy/note/lecture-1|lecture-1.md]]** — *เอกสารติว Chapter 1
+  (ภาษาไทย)*. Study guide built from
+  [[Chapter+1+-+Foundations+of+Engineering+Economy|the Chapter 1 cache]], covering all 27 slides
+  from zero with worked numbers. 17 sections: pre-requisites → EE definition → the two 7-step lists
+  → TVM → interest/ROR → symbols → cash flow → diagrams → equivalence → simple vs. compound → MARR
+  and WACC → opportunity cost → ethics → Excel functions → cheat sheet → errata and traps →
+  12 practice problems with full solutions → pre-exam checklist.
+  Headings are tagged **(จาก slide 1-N)** where the content is on a slide and **(เสริม)** where it
+  is added context, so exam-relevant material is separable from background.
+  > Records three things the deck itself doesn't: outcome #3 **"Ethics and economics"** is declared
+  > on slide 1-2 but **has no content slide anywhere in the deck** (nor in the 1-27 summary), so the
+  > note supplies that section; slide 1-26's `NPER` entry has **an extra opening parenthesis**; and
+  > `PMT(5%,5,5000)` actually returns **−1154.87** in Excel, not the `$1154.87` the slide prints —
+  > a sign-convention point the slide leaves out. All arithmetic in the note was machine-verified.

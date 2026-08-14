@@ -97,3 +97,38 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   an exam or a submission. **Page 1 is a blank red scanning artifact, not a missing page.**)_
 
 ## note/
+
+My own study notes — written in Thai, casual register, built to be read instead of the slides.
+Both follow the same shape: a label key (**(จาก slide N)** = on the real slide, **(เสริม)** = added
+context, ⚠️ = slide typo or common trap, 🧮 = worked numeric example), a numbered สารบัญ of
+`ตอนที่ N` sections, then a cheat sheet / errata / practice-problem / exam-checklist tail.
+
+- **[[CPE342-machine-learning/note/lecture-1|lecture-1.md]]** — study guide for
+  [[Lecture+1+-+Introduction+to+ML.pdf]]. Sections 0–12: foundations (notation, dot product,
+  inverse, derivatives, logs) → what ML is → learning types → `Y=f(X)+ε` → Mitchell's T/P/E with
+  full metric formulas → linear regression by normal equation, worked by hand → under/overfitting →
+  Bayes' classifier → Bayes' theorem (disease-test worked example) → Bayesian spam filter → LDA/QDA
+  computed by hand end-to-end → confusion matrix, F-measure, ROC/AUC by hand → coding practice.
+  > ⚠️ **Unfinished.** Its own สารบัญ lists sections 13–16 (cheat sheet · slide errata · practice
+  > problems · exam checklist) but the file stops after section 12 at an `<!-- OUTLINE-REMAINING -->`
+  > marker. The four tail sections were never written.
+  > Its สารบัญ also uses GitHub-style `](#anchor)` links, which Obsidian does **not** resolve —
+  > [[CPE342-machine-learning/note/lecture-2|lecture-2.md]] uses `[[#heading]]` instead.
+
+- **[[CPE342-machine-learning/note/lecture-2|lecture-2.md]]** — study guide for
+  [[Lecture+2+-+Training+Models.pdf]] **and** the handwritten companion [[Lecture+2+-+ML.pdf]],
+  covering all 38 slides. Sections 0–15: foundations (chain rule, gradient, determinant, Cramer's
+  rule) → closed-form vs iterative → the two model equations and what `ε` means → why least squares
+  squares → OLS derived line by line from slide 8 through the Cramer's-rule closed forms, then
+  computed by hand with $R^2$ → the slide-12 pseudoinverse example solved by hand to
+  $[3, 5.5, -1.5]$, plus the geometric (orthogonal-projection) reason $\mathbf{A}^\top$ is
+  multiplied in → gradient descent intuition and why nonlinear least squares has no closed form →
+  GD walked by hand with a learning-rate table showing convergence, one-step convergence, and
+  divergence → the handwritten deck's exponential model $c_0+c_1e^{c_2x}$ with all three partials
+  and one full numeric iteration → batch/SGD/mini-batch with epoch-vs-iteration arithmetic →
+  logistic regression from odds through the 8-line slide-35 gradient derivation, trained by hand →
+  runnable code → cheat sheet → **slide errata table** → 7 practice problems with worked solutions →
+  tiered exam checklist.
+  > Worked examples deliberately use datasets **different from [[Assighment-1.pdf]]**, so the
+  > assignment's own numbers stay ungraded work (class policy — see
+  > [[CPE342-machine-learning/CLAUDE|CLAUDE.md]]).

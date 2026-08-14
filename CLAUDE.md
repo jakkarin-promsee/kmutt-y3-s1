@@ -103,6 +103,7 @@ as collaborative, not order-taking:
 
 - `README.md` — public GitHub-facing pitch (repo: `kmutt-y3-s1`). Uses relative markdown links, not
   wiki-links, because GitHub renders `[[…]]` as dead text.
+- `prompts ` — my reusable prompts set. Ignore unless I ask.
 - `PROBLEM.md` — my pain-point / roadmap list for the vault itself. Ignore unless I ask.
 - [[save-checkpoint.py]] — `python save-checkpoint.py` stages the whole vault and commits as
   `<dd>/<mm>/<BE year>-<n>`, whichever folder it's run from — though Python still needs the path, so
