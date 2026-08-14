@@ -25,7 +25,7 @@ exactly like this, and keep the Status column in sync.
 | CPE342 | Machine Learning     | `CPE342-machine-learning`     | **active**  |
 | GEN101 | Physical Education   | `GEN101-physical-education`   | not created |
 | GEN241 | Beauty of Life       | `GEN241-beauty-of-life`       | not created |
-| PRE380 | Engineering Economy  | `PRE380-engineering-economy`  | not created |
+| PRE380 | Engineering Economy  | `PRE380-engineering-economy`  | **active**  |
 
 ---
 

@@ -57,6 +57,25 @@ removed. **Do not list `temp/`** — it's volatile.
   all 46 slides; one `## Slide N` heading per slide, slide text and shell/Git snippets verbatim,
   and 29 diagrams captured as one-line descriptions (SDLC phases, process models, branching model,
   merge types). Descriptions, not pictures — read the PDF if a diagram's exact shape matters.)*
+- [[Lecture+2+-+Requirement+Engineering.pdf]] — **Lecture 2, "Requirement Engineering"** (Week 2,
+  10–14 Aug 2026). 43 slides, continuing straight from Lecture 1. First half is the theory: why
+  requirements matter (software's intangibility, project-failure stats, the cost-of-defects curve) →
+  stakeholders and what a requirement *is* → user vs. system vs. business requirements → functional
+  vs. non-functional vs. domain, with an NFR taxonomy → the quality checklist. Then the **four-phase
+  RE process** — Elicitation & Analysis, Specification, Validation, Change Management — each worked
+  against the course's running TokTickIT / campus-ticketing example. Closes the theory with
+  MVP-style feature scoping, a **traceability matrix** sized for Lab 1, and RE in the AI-agent era
+  (weak vs. strong prompts).
+  **Slides 34–43 are explicit Lab 1 prep** — project structure, full-stack architecture,
+  React/TS/Vite/Bootstrap, Node/Express/TS, REST fundamentals and Express routes,
+  PostgreSQL/Prisma schema & seed, React data-fetching states, and Vitest/Supertest patterns. Same
+  `/api/health` and `/api/categories` endpoints as [[Lab1_Labsheet.pdf]], so read these slides
+  alongside the lab sheet rather than separately.
+  *(text cache: [[Lecture+2+-+Requirement+Engineering]] — generated 2026-08-15 by a Sonnet subagent
+  reading all 43 slides; one `## Slide N` heading per slide, slide text and code snippets verbatim,
+  and 20 diagrams captured as one-line descriptions (cost-of-defects chart, NFR taxonomy tree, RE
+  process flow, traceability chain, full-stack architecture, Prisma pipeline). Descriptions, not
+  pictures — read the PDF if a diagram's exact shape matters.)*
 
 ## note/
 

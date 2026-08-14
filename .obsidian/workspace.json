@@ -20,8 +20,33 @@
               "icon": "lucide-file",
               "title": "Lab1_Guidance"
             }
+          },
+          {
+            "id": "dac6cd76f5c93437",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "PRE380-engineering-economy/lecture/Chapter+2+-+Engineering+Economy+Factors.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Chapter+2+-+Engineering+Economy+Factors"
+            }
+          },
+          {
+            "id": "9737d4d451ef71dd",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "CPE334-software-engineering/assignment/Lab-1/Lab1_Git_GitHub_CheatSheet.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Lab1_Git_GitHub_CheatSheet"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -42,7 +67,7 @@
               "state": {
                 "sortOrder": "alphabetical",
                 "autoReveal": false,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
@@ -188,42 +213,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "6810a1b092c2bd8f",
+  "active": "dac6cd76f5c93437",
   "lastOpenFiles": [
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Issue_Drafts.md",
+    "PRE380-engineering-economy/INDEX.md.tmp.17076.dbcaec16b8fc",
+    "PRE380-engineering-economy/lecture/Chapter+2+-+Factors,+Effect+of+Time+&+Interest+on+Money.pdf",
+    "PRE380-engineering-economy/lecture/Chapter+2+-+Engineering+Economy+Factors.pdf",
+    "PRE380-engineering-economy/lecture/Chapter+2+-+Engineering+Economy+Factors.md",
+    "PRE380-engineering-economy/lecture/Chapter+2+-+COMPOUND+INTEREST+TABLES.pdf",
     "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.pdf",
+    "PRE380-engineering-economy/CLAUDE.md.tmp.17076.73f23f05f838",
     "CPE334-software-engineering/assignment/Lab-1/Lab1_Guidance.md",
-    "CPE334-software-engineering/lecture/Lecture+1+-+Introduction.pdf",
-    "CPE334-software-engineering/note/Git_GitHub_Workflow_Playbook.md",
-    "CPE334-software-engineering/note/Git_GitHub_Workflow_Playbook.md.tmp.34124.36f079379c24",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Glossary.pdf",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Git_GitHub_CheatSheet.pdf",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Git_GitHub_CheatSheet.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Issue_Drafts.md",
+    "PRE380-engineering-economy/lecture/Chapter+2+-+Factors,+Effect+of+Time+&+Interest+on+Money.md",
+    "PRE380-engineering-economy/lecture/Chapter+1+-+Foundations+of+Engineering+Economy.md",
+    "PRE380-engineering-economy/lecture/Chapter+0+-+Introduction.md",
+    "CPE334-software-engineering/lecture/Lecture+2+-+Requirement+Engineering.md",
+    "PRE380-engineering-economy/assignment/Assignment-1.jpg",
+    "PRE380-engineering-economy/assignment/Assignment-1.md",
+    "CPE342-machine-learning/lecture/Lecture+2+-+Training+Models.md",
+    "CPE342-machine-learning/lecture/Lecture+2+-+ML.md.tmp.32192.c8956ca12603",
+    "CPE342-machine-learning/lecture/Lecture+2+-+ML.md",
+    "CPE342-machine-learning/lecture/Lecture+2+-+ML.md.tmp.32192.af89ad1e8449",
+    "PRE380-engineering-economy/lecture/Chapter+0+-+Introduction.pdf",
+    "PRE380-engineering-economy/lecture/COMPOUND+INTEREST+TABLES.pdf",
+    "PRE380-engineering-economy/lecture/Chapter+0+-+Introduction (1).pdf",
+    "PRE380-engineering-economy/CLAUDE.md",
+    "PRE380-engineering-economy/INDEX.md",
+    "format-template - Copy/INDEX.md",
+    "format-template - Copy/CLAUDE.md",
+    "CPE342-machine-learning/assignment/Assighment-1.md",
     "CLAUDE.md",
-    "CLAUDE.md.tmp.8260.f1ddcd4037c7",
-    "README.md.tmp.8260.9239fd7cba73",
-    "CONVENTIONS.md",
-    "README.md.tmp.35432.2e1452812f28",
-    "README.md.tmp.35432.42df31c9cece",
-    "save-checkpoint.py",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.md",
-    "CPE334-software-engineering/lecture/Lecture+1+-+Introduction.md",
     "README.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.md",
+    "CPE334-software-engineering/note/Git_GitHub_Workflow_Playbook.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Git_GitHub_CheatSheet.md",
+    "CONVENTIONS.md",
+    "CPE334-software-engineering/lecture/Lecture+1+-+Introduction.md",
     "CPE334-software-engineering/assignment/Lab-1/Lab1_Glossary.md",
     "PROBLEM.md",
-    "format-template/CLAUDE.md",
-    "format-template/INDEX.md",
-    "CPE342-machine-learning/CLAUDE.md",
-    "CPE334-software-engineering/CLAUDE.md",
-    "CPE333-operating-systems/CLAUDE.md",
-    "CPE333-operating-systems/INDEX.md",
-    "CPE334-software-engineering/lecture/CPE334_Syllabus_1-2026.md",
-    "CPE334-software-engineering/INDEX.md",
-    "2026-08-04.md",
-    "CPE333-operating-systems/lecture/Lecture1_IntroductionToOS.md",
-    "PROBLEM.md.md",
-    "CPE333-operating-systems/lecture/Syllabus_CPE333.md",
-    "CPE342-machine-learning/lecture/CPE342+Syllabus.md",
-    "format-template - Copy/INDEX.md"
+    "format-template/CLAUDE.md"
   ]
 }

@@ -67,7 +67,10 @@ something would be my gradable deliverable so I keep it honest.
 - ⚠️ **Instructor vs. slide author mismatch.** The syllabus lists **Dr. Boonyarit Changaival** as
   instructor; the Lecture 1 slides are authored/presented by **Asst. Prof. Dr. Santitham Prom-on.**
   Could be a co-instructor, a coordinator, or reused slides. Worth confirming who teaches/grades.
-- ⚠️ **Semester date.** The syllabus prints **1/2025**, but this vault was set up in **Aug 2026**.
-  The slide deck is likely reused from a prior year — confirm the actual term (probably 1/2026).
+- ⚠️ **Semester date — and stale dates on handouts generally.** The syllabus prints **1/2025**, and
+  [[Assighment-1.pdf]] prints **1/2024** with *"Due: 21 August 2024"* — but this vault was set up in
+  **Aug 2026**. Materials are plainly reused year to year, so treat **every printed date on a
+  handout as stale**: derive the real deadline from the one-week policy and the lecture date, then
+  confirm on LEB2. The actual term is probably 1/2026.
 - Lecture 1 is unusually broad: it front-loads the whole ML landscape *plus* three ISLP topics
   (statistical learning, Bayes' classifier, LDA/QDA). Expect later lectures to go deeper on each.
