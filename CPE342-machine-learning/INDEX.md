@@ -104,16 +104,23 @@ context, ⚠️ = slide typo or common trap, 🧮 = worked numeric example), a n
 `ตอนที่ N` sections, then a cheat sheet / errata / practice-problem / exam-checklist tail.
 
 - **[[CPE342-machine-learning/note/lecture-1|lecture-1.md]]** — study guide for
-  [[Lecture+1+-+Introduction+to+ML.pdf]]. Sections 0–12: foundations (notation, dot product,
-  inverse, derivatives, logs) → what ML is → learning types → `Y=f(X)+ε` → Mitchell's T/P/E with
-  full metric formulas → linear regression by normal equation, worked by hand → under/overfitting →
-  Bayes' classifier → Bayes' theorem (disease-test worked example) → Bayesian spam filter → LDA/QDA
-  computed by hand end-to-end → confusion matrix, F-measure, ROC/AUC by hand → coding practice.
-  > ⚠️ **Unfinished.** Its own สารบัญ lists sections 13–16 (cheat sheet · slide errata · practice
-  > problems · exam checklist) but the file stops after section 12 at an `<!-- OUTLINE-REMAINING -->`
-  > marker. The four tail sections were never written.
-  > Its สารบัญ also uses GitHub-style `](#anchor)` links, which Obsidian does **not** resolve —
-  > [[CPE342-machine-learning/note/lecture-2|lecture-2.md]] uses `[[#heading]]` instead.
+  [[Lecture+1+-+Introduction+to+ML.pdf]], covering all 83 slides. Opens with a table folding the
+  course-admin slides 1–7 (CLOs, grading, references, policies) and the section dividers into one
+  row each, so nothing is silently dropped. Sections 0–16: foundations (notation, dot product,
+  inverse, derivatives, logs) → what ML is → learning types → `Y=f(X)+ε`, prediction vs inference,
+  reducible vs irreducible error → Mitchell's T/P/E with all 7 tasks and full metric formulas,
+  plus the accuracy trap shown numerically → linear regression derived line by line from slide 39
+  and worked by hand to $\hat{y}=0.5+1.4x$ with $R^2=0.98$ → under/overfitting with a
+  train-vs-test diagnosis table → Bayes' classifier and Bayes error rate → Bayes' theorem
+  (disease test solved twice, by formula and by natural frequencies) → Bayesian spam filter
+  including Laplace smoothing and the log-form sigmoid that links it to logistic regression →
+  LDA/QDA computed by hand end-to-end, including how an unequal prior flips the same test point →
+  confusion matrix, F-measure, ROC/AUC by hand (trapezoid **and** pair-counting) → coding practice
+  → cheat sheet → **slide errata table** → 7 practice problems with collapsible worked solutions →
+  tiered exam checklist.
+  > Worked examples deliberately avoid [[Assighment-1.pdf]]'s own dataset, same as
+  > [[CPE342-machine-learning/note/lecture-2|lecture-2.md]] (class policy — see
+  > [[CPE342-machine-learning/CLAUDE|CLAUDE.md]]).
 
 - **[[CPE342-machine-learning/note/lecture-2|lecture-2.md]]** — study guide for
   [[Lecture+2+-+Training+Models.pdf]] **and** the handwritten companion [[Lecture+2+-+ML.pdf]],

@@ -162,3 +162,29 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   > note supplies that section; slide 1-26's `NPER` entry has **an extra opening parenthesis**; and
   > `PMT(5%,5,5000)` actually returns **−1154.87** in Excel, not the `$1154.87` the slide prints —
   > a sign-convention point the slide leaves out. All arithmetic in the note was machine-verified.
+
+- **[[PRE380-engineering-economy/note/lecture-2|lecture-2.md]]** — *เอกสารติว Chapter 2
+  (ภาษาไทย)*. Study guide built from
+  [[Chapter+2+-+Factors,+Effect+of+Time+&+Interest+on+Money|the Chapter 2 cache]], covering all 26
+  slides from zero. 22 sections: pre-requisites → chapter map → symbols → factor notation → single
+  payment `F/P`,`P/F` → reading the interest tables → spreadsheets → uniform series `P/A`,`A/P` →
+  `F/A`,`A/F` → **placement rules** → untabulated `i`/`n` → arithmetic gradient → worked gradient
+  example → geometric gradient → unknown `i` → unknown `n` → factor relationships → the slide-2-26
+  summary → cheat sheet → 18 traps → 15 practice problems with full solutions → pre-exam checklist.
+  Same labelling scheme as [[PRE380-engineering-economy/note/lecture-1|lecture-1.md]]: headings
+  tagged **(จาก slide 2-N)** where the content is on a slide, **(เสริม)** where it is added context.
+  > Derives every factor rather than asserting it, so the placement rules fall out of the algebra:
+  > `P/A` is built by summing `P/F` term by term (which is *why* P lands one period early), and
+  > `F/A` by summing `F/P` (the last A carries $(1+i)^0$, which is *why* F is coincident).
+  > Both in-class assessment problems the deck poses without answers — **2-10** (Mr. Sompong's three
+  > past deposits, \$47,087.50) and **2-23** (the \$16,000 instrument, PW \$22,974.26) — are worked
+  > in full; 2-23 is the chapter's hardest, combining a `g > i` geometric gradient with a salvage
+  > sign flip.
+  > Records four things the deck doesn't: **(1)** slide 2-24's "i is between 22% and 24%" **cannot
+  > be done with this course's tables** — [[Chapter+2+-+COMPOUND+INTEREST+TABLES.pdf]] jumps 20% →
+  > 25%, so the note redoes the bracket with the pages that exist. **(2)** the formula sheet
+  > [[Chapter+2+-+Engineering+Economy+Factors]] has **no finite-`n` `P/G`** (only `A/G` and the
+  > `n → ∞` form), so `(P/G) = (A/G)(P/A)` is given as the workaround. **(3)** slide 2-5's `P/A`
+  > column header reads *"Find A Given A"* where *"Find P Given A"* is meant. **(4)** interpolation
+  > reads high **because the factor curves are convex**, demonstrated across four factors — the
+  > deck states the symptom without the cause. All arithmetic machine-verified.
