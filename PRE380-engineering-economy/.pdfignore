@@ -1,0 +1,7 @@
+# Files that are NOT worth a Markdown cache. Same rules as .gitignore; applies to
+# this folder and everything under it. Checked by `python check-pdf-cache.py`.
+
+# 32 pages of numeric factor tables. `pdftotext -layout` misaligns the columns, so
+# values land under the wrong `n` -- and a silently wrong factor is worse than no
+# cache at all. Read the specific PDF page instead; the page map is in INDEX.md.
+lecture/Chapter+2+-+COMPOUND+INTEREST+TABLES.pdf

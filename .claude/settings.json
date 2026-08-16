@@ -12,6 +12,8 @@
       "Bash(git show:*)",
       "Bash(git ls-files:*)",
       "Bash(git remote -v)",
+      "Bash(python check-pdf-cache.py:*)",
+      "Bash(python ../check-pdf-cache.py:*)",
       "Bash(python save-checkpoint.py)",
       "Bash(python save-checkpoint.py --dry-run)",
       "Bash(python save-checkpoint.py -n:*)"

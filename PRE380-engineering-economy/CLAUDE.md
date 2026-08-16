@@ -126,6 +126,7 @@ Engineering economy is graded on *method*, not just the final number. So when he
 - **The interest tables have no Markdown cache, on purpose.** They're 32 pages of numeric columns;
   `pdftotext -layout` misaligns rows, which would silently produce wrong factor values. Read the
   specific PDF page instead — the page map is in [[PRE380-engineering-economy/INDEX|INDEX.md]].
+  This folder's `.pdfignore` says so too, so don't generate one "to be helpful".
 - Filenames are `+`-encoded LEB2 downloads. "Chapter 0" is the **syllabus / course-overview deck**,
   not a content chapter — every course fact above comes from it.
 - Currency mixes: the decks are the US textbook's ($), the assignments are Thai (Baht). Keep them

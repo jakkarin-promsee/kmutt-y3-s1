@@ -78,10 +78,31 @@ working, fix it:
 
 ## Reading PDFs — read the cache, not the PDF
 
-PDF pages load as images and burn context. Before reading `<name>.pdf`, look for `<name>.md` beside
-it and read that instead. If it's missing or older than the PDF, generate it first: `pdftotext` for
-prose, a **Sonnet subagent** for slide decks with math or figures. Full procedure and the `INDEX.md`
-bookkeeping: the `pdf-cache` skill. `/update-index` does this for a whole class folder at once.
+PDF pages load as images and burn context, so every `.pdf` / `.pptx` here gets a `<name>.md` twin,
+generated once and read forever after. **Don't work out by hand which files have one** — that's a
+pile of `ls` calls and easy to get wrong. Ask [[check-pdf-cache.py]] instead:
+
+```bash
+python check-pdf-cache.py <path>
+```
+
+A **file** → what to do with that one. A **folder** → every source under it still uncached, or
+`nothing to do`. The four answers:
+
+| | Means | Do |
+| --- | --- | --- |
+| `CACHED` | `<name>.md` exists | read the `.md`, never the PDF |
+| `MISSING` | no cache yet | generate it — `pdftotext` for prose, a **Sonnet subagent** for decks with math or figures |
+| `EXPORT` | a `.pptx` with no `.pdf` | ask me to export it; never run `pdftotext` on a `.pptx` |
+| `IGNORED` | a `.pdfignore` rule matched | **don't cache it** — I've marked it not worth the tokens |
+
+A class folder may carry its own `.pdfignore`. It behaves exactly like `.gitignore` (own folder plus
+everything under it, `#` comments, `!` negation, globs), and Windows-style separators are fine.
+There can be several across the vault, so never assume the rules from one class apply to another —
+the script already resolves that.
+
+Full procedure and the `INDEX.md` bookkeeping: the `pdf-cache` skill. `/update-index` does the whole
+class folder at once.
 
 ---
 
@@ -105,6 +126,9 @@ as collaborative, not order-taking:
   wiki-links, because GitHub renders `[[…]]` as dead text.
 - `prompts ` — my reusable prompts set. Ignore unless I ask.
 - `PROBLEM.md` — my pain-point / roadmap list for the vault itself. Ignore unless I ask.
+- [[check-pdf-cache.py]] — `python check-pdf-cache.py <path>` answers "does this PDF already have a
+  Markdown cache?" for one file or a whole folder, `.pdfignore` included. See **Reading PDFs**
+  above; `--all`, `--stale` and `--json` are in `--help`.
 - [[save-checkpoint.py]] — `python save-checkpoint.py` stages the whole vault and commits as
   `<dd>/<mm>/<BE year>-<n>`, whichever folder it's run from — though Python still needs the path, so
   from inside a class folder that's `python ../save-checkpoint.py`. Add `--push` to also push. Run

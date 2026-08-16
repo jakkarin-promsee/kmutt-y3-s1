@@ -1,7 +1,7 @@
 ---
 description: Sync a class folder's INDEX.md (and CLAUDE.md) with disk — including PDF→Markdown caches
 argument-hint: "[folder]  — e.g. CPE342-machine-learning; omit to use the class in context"
-allowed-tools: Bash(find:*), Bash(ls:*), Bash(pdftotext:*), Read, Edit, Write, Glob, Task
+allowed-tools: Bash(find:*), Bash(ls:*), Bash(pdftotext:*), Bash(python check-pdf-cache.py:*), Read, Edit, Write, Glob, Task
 ---
 
 You are running the **`/update-index`** maintenance command for this Obsidian coursework vault.
@@ -21,9 +21,18 @@ load the `pdf-cache` and `vault-writing` skills — they hold the procedures thi
 1. **List reality.** Recursively list the target's files, excluding `temp/` and dotfiles/dotdirs:
    `find "$1" -not -path '*/temp/*' -not -path '*/.*' -type f | sort`
 
-2. **Ensure every PDF has a fresh Markdown cache (`pdf-cache` skill).** For each `<name>.pdf` found
-   (outside `temp/`):
-   - If `<name>.md` is **missing or older** than the PDF → (re)generate it:
+2. **Ensure every PDF has a Markdown cache (`pdf-cache` skill).** Ask the script which ones are
+   missing — don't compare filenames yourself, and don't skip this because the listing "looks
+   obvious". It is the only thing that reads the class's `.pdfignore`:
+
+   ```bash
+   python check-pdf-cache.py "$1"
+   ```
+
+   (from inside a class folder it's `python ../check-pdf-cache.py .`)
+
+   Then act on each line it prints, and **only** on those:
+   - `MISSING` → generate the cache:
      - `pdftotext -layout -enc UTF-8 "<name>.pdf" "<name>.md"` for text/prose PDFs (e.g. a syllabus).
      - If the PDF is **formula-heavy / figure-heavy / scanned** (lecturer slide decks), pdftotext
        mangles it — instead spawn a **Sonnet subagent** (Task tool, `model: sonnet`) that reads the
@@ -31,7 +40,10 @@ load the `pdf-cache` and `vault-writing` skills — they hold the procedures thi
        (`$…$` / `$$…$$`), each figure in one italic line.
      - Unsure which? Sample the pdftotext output — if math/figures come out as blank or garbage
        (e.g. `������`), use the subagent.
-   - If `<name>.md` already exists and is **at least as new** as the PDF → leave it.
+   - `EXPORT` → a `.pptx` with no `.pdf` reading copy. Don't convert it; note it for the report and
+     ask the user to export it.
+   - Anything it doesn't list is already cached or `.pdfignore`d — **leave it alone**. A file the
+     user ignored still gets its `INDEX.md` entry, just without a text-cache note.
    - After converting, re-run the step-1 listing so the new `.md` caches are included below.
 
 3. **Read the docs.** Read `$1/INDEX.md` and `$1/CLAUDE.md`. If either is missing, create it from
@@ -65,6 +77,6 @@ load the `pdf-cache` and `vault-writing` skills — they hold the procedures thi
 
 ## Report
 
-End with a short summary: PDFs converted (and how), files added / removed / moved, which docs you
-edited, and anything that looked off. If nothing drifted and every PDF already had a fresh cache,
-say exactly that.
+End with a short summary: PDFs converted (and how), any `EXPORT` deck still waiting on the user,
+files added / removed / moved, which docs you edited, and anything that looked off. If nothing
+drifted and `check-pdf-cache.py` reported nothing to do, say exactly that.

@@ -130,6 +130,8 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   > values land under the wrong `n` — and a silently wrong factor value is worse than no cache.
   > **Read the specific PDF page instead**, or pull one page as text with
   > `pdftotext -f <page> -l <page> -layout` and check the alignment before trusting it.
+  > The decision is recorded in this folder's `.pdfignore`, so `check-pdf-cache.py` answers
+  > `IGNORED` for it instead of reporting a missing cache every time.
 
   **Page map** (PDF page → interest rate):
 

@@ -95,14 +95,16 @@ Together they let me use this like a **real vault** — dump things in, work mes
 
 ```mermaid
 flowchart TD
-    A["📥 I drop a file<br/>lecture.pdf / lab.pdf / slides.pptx"] --> B{"Is there a fresh<br/>.md cache next to it?"}
-    B -->|Yes| G
-    B -->|No| C{"Prose, or<br/>math &amp; figures?"}
+    A["📥 I drop a file<br/>lecture.pdf / lab.pdf / slides.pptx"] --> B{"🔎 <b>check-pdf-cache.py</b><br/>is there an .md cache?"}
+    B -->|"CACHED"| G
+    B -->|"IGNORED — .pdfignore"| X["🚫 never cached, on purpose<br/><i>converting it would lie</i>"]
+    B -->|"MISSING"| C{"Prose, or<br/>math &amp; figures?"}
     C -->|"Prose (syllabus)"| D["pdftotext -layout<br/><i>free, no model</i>"]
     C -->|"Formula / figure heavy"| E["Sonnet subagent reads<br/>every page → LaTeX + figure notes<br/><i>heavy reads stay out of main context</i>"]
     D --> F["📄 name.md — the text cache"]
     E --> F
     F --> G["🗺️ INDEX.md updated<br/>annotated entry + wiki-link"]
+    X --> G
     G --> H["📋 CLAUDE.md updated<br/>only if course facts changed"]
     H --> I["✅ Permanently cheap to read"]
 
@@ -112,6 +114,7 @@ flowchart TD
 
     style A fill:#1e40af,stroke:#93c5fd,color:#fff
     style E fill:#7c2d12,stroke:#fdba74,color:#fff
+    style X fill:#3f3f46,stroke:#a1a1aa,color:#fff
     style I fill:#14532d,stroke:#86efac,color:#fff
 ```
 
@@ -171,20 +174,26 @@ kmutt-y3-s1/
 ├── README.md                    # 📖 you are here
 ├── PROBLEM.md                   # 🐛 my running pain-point log for the system itself
 ├── save-checkpoint.py           # ⭐ CORE — one-command checkpoint: add + commit + push
+├── check-pdf-cache.py           # 🔎 which PDFs still need a Markdown cache (honours .pdfignore)
 │
 ├── format-template/             # 🧬 the seed — copy this to create a new class
 │   ├── CLAUDE.md                #    blank per-class instruction file
 │   └── INDEX.md                 #    blank map file
 │
+├── prompts/                     # 🗂️  reusable prompt drafts of mine — not part of the system
+│
 ├── CPE333-operating-systems/    # 🟢 one folder per class, identical shape (see below)
 ├── CPE334-software-engineering/ # 🟢
 ├── CPE342-machine-learning/     # 🟢
+├── PRE380-engineering-economy/  # 🟢
 │
 ├── .claude/                     # ⚙️  agent config
 │   ├── commands/update-index.md # ⭐ CORE — the ingest command
 │   ├── skills/vault-writing/    # 📐 Law II — link syntax, formatting, prose wrap
 │   ├── skills/pdf-cache/        # 📄 Law I — PDF → Markdown, the cheap way
-│   └── settings.local.json      #    permissions
+│   ├── settings.json            #    shared permissions (committed)
+│   └── settings.local.json      #    personal permissions (gitignored)
+├── .gitignore                   # 🙈 temp/, secrets, node_modules — a checkpoint stages everything
 └── .obsidian/                   # 🔗 vault config (gitignored — machine-local)
 ```
 
@@ -196,6 +205,7 @@ Identical layout across all classes is not aesthetics — it's what lets an agen
 <CODE>-<kebab-case-name>/
 ├── CLAUDE.md      # 📋 course facts + class-specific rules (instructor, grading, policies)
 ├── INDEX.md       # 🗺️ annotated map of every file — the agent's entry point
+├── .pdfignore     # 🚫 optional — PDFs in this class that must never be cached
 ├── lecture/       # 📚 from the lecturer: slides, PDFs, readings (+ their .md caches)
 ├── assignment/    # ✏️  briefs, my working files, submissions
 ├── note/          # 🖊️  my own writing worth keeping
@@ -249,6 +259,21 @@ The cache is a **proxy, not a replacement** — if a task genuinely needs the vi
 
 > A `lecture/name.md` (machine transcript) and a `note/lecture1.md` (my own study note) are different artifacts and can both exist for the same deck. One is a photocopy, one is understanding.
 
+**The lookup is a script, not a judgement call.** "Does this file already have a cache?" is a question an agent should never answer by eyeballing a directory listing. It costs a fistful of tool calls per folder, and it gets *wrong* the moment a `.pptx`, its reading-copy `.pdf` and the `.md` sit side by side — three files, one document. [`check-pdf-cache.py`](check-pdf-cache.py) answers it in one call, for a single file or a whole class folder, with no dependencies and no model involved:
+
+```bash
+python check-pdf-cache.py CPE342-machine-learning
+```
+
+|            | Means                                     | The one correct response                              |
+| ---------- | ----------------------------------------- | ----------------------------------------------------- |
+| `CACHED`   | the `.md` twin exists                     | read the `.md`. Never open the PDF                    |
+| `MISSING`  | no cache yet                              | generate one — `pdftotext`, or a subagent if it's math |
+| `EXPORT`   | a `.pptx` whose reading-copy PDF is absent | ask the human; a script can't export PowerPoint       |
+| `IGNORED`  | a `.pdfignore` rule matched               | do nothing, and don't ask again                       |
+
+**`.pdfignore` — the escape hatch, because some PDFs are pure cost.** Thirty-two pages of compound-interest tables convert into misaligned columns where every value sits under the wrong heading. A lab report that is forty screenshots converts into nothing at all. Both are worse than useless: a silently wrong cache is **a lie the agent will believe**, and it will believe it confidently, forever. So any folder can carry a `.pdfignore` — same semantics as `.gitignore`, including `#` comments, `!` negation, globs, and inheritance into subfolders. The file stays in the vault and still gets its `INDEX.md` entry. It just never gets a cache, and nothing offers to generate one ever again.
+
 **Decision rules, exact commands, and the `INDEX.md` bookkeeping:** [`pdf-cache`](.claude/skills/pdf-cache/SKILL.md).
 
 ### 🔗 Law II — The Linking Rule (build a graph, not a pile)
@@ -273,6 +298,7 @@ The first two are [**the core**](#the-two-main-commands) — everything else is 
 | ⭐💾 | **`python save-checkpoint.py`** | 📦 in this repo — [`save-checkpoint.py`](save-checkpoint.py)                               | The checkpoint. Stages the whole vault from the repo root, commits as `<dd>/<mm>/<BE year>-<n>` with the number read back out of `git log`, and pushes when given `--push`. `-n` adds a body note, `--dry-run` shows the plan.                       |
 | 📐   | **`vault-writing`** (skill)     | 📦 in this repo — [`.claude/skills/vault-writing/`](.claude/skills/vault-writing/SKILL.md) | Law II in full. Wiki-link syntax and its edge cases, what must _not_ be linked, the `<br/>` rule, and the never-reflow rule. Loads only when markdown is actually being written.                                                                     |
 | 📄   | **`pdf-cache`** (skill)         | 📦 in this repo — [`.claude/skills/pdf-cache/`](.claude/skills/pdf-cache/SKILL.md)         | Law I in full. Check for the cache, generate it with `pdftotext` or a Sonnet subagent, record it in `INDEX.md`. Loads only when a PDF is about to be opened.                                                                                         |
+| 🔎   | **`python check-pdf-cache.py`** | 📦 in this repo — [`check-pdf-cache.py`](check-pdf-cache.py)                               | Law I's lookup, so the agent never guesses. Pairs every `.pdf`/`.pptx` with its `.md` twin and reports only the unpaired ones — one file or a whole folder, `.pdfignore` applied, `temp/` skipped. Zero dependencies, zero model calls.              |
 | 🕸️   | **`/graphify`**                 | 🌐 global — `~/.claude/skills/graphify/`                                                   | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
 
 ### Starting a new class
@@ -292,9 +318,9 @@ Fill in the two files, then run `/update-index CPE999-example-class` and let the
 | **CPE333** | Operating Systems    | [`CPE333-operating-systems`](CPE333-operating-systems)       | 🟢 active      |
 | **CPE334** | Software Engineering | [`CPE334-software-engineering`](CPE334-software-engineering) | 🟢 active      |
 | **CPE342** | Machine Learning     | [`CPE342-machine-learning`](CPE342-machine-learning)         | 🟢 active      |
+| **PRE380** | Engineering Economy  | [`PRE380-engineering-economy`](PRE380-engineering-economy)   | 🟢 active      |
 | GEN101     | Physical Education   | `GEN101-physical-education`                                  | ⚪ not created |
 | GEN241     | Beauty of Life       | `GEN241-beauty-of-life`                                      | ⚪ not created |
-| PRE380     | Engineering Economy  | `PRE380-engineering-economy`                                 | ⚪ not created |
 
 ---
 
@@ -388,10 +414,11 @@ It makes my _questions_ cheaper, which means I ask more of them, which is probab
 - [x] `format-template/` for zero-friction class creation
 - [x] `/update-index` — one-command drift correction for what the agent knows
 - [x] `save-checkpoint.py` — one-command drift correction for what git records
+- [x] Custom skills — `pdf-cache` and `vault-writing`, the two Laws in executable form
+- [x] `check-pdf-cache.py` + `.pdfignore` — the cache lookup stops being a judgement call
 - [ ] Better PDF conversion — library-assisted rather than everything on the subagent _(tracked in [`PROBLEM.md`](PROBLEM.md))_
-- [ ] Remaining three classes (GEN101, GEN241, PRE380)
+- [ ] Remaining two classes (GEN101, GEN241)
 - [ ] Assignment-tracking layer — deadlines and status surfaced without opening each brief
-- [ ] Custom skills, once I've used this long enough to know which pain points are real
 
 ---
 
