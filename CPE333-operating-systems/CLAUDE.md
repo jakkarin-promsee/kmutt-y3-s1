@@ -15,16 +15,6 @@ before working on anything in this class. For vault-wide rules, see the root
 - **Grading:** Midterm 30% / Final 30% / Mini-project 20% / Lab + Assignment + Quiz 20%
   - Graded **relative to class peers**; a total below ~35% is usually an F.
 
-## Folder layout
-
-Same as every class (see root [CLAUDE.md](../CLAUDE.md)):
-
-- `assignment/` — assignment briefs, my working files, submissions
-- `lecture/` — slides / PDFs / readings from the lecturer
-- `note/` — my own notes worth keeping
-- `temp/` — scratch; volatile, **never documented**
-- [[CPE333-operating-systems/INDEX|INDEX.md]] — annotated map of this folder
-
 ## Class-specific notes
 
 **Goal of the course:** understand OS concepts well enough to read small, basic **Linux kernel

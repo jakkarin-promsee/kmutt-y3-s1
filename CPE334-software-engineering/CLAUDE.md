@@ -18,16 +18,6 @@ vault-wide rules, see the root [CLAUDE.md](../CLAUDE.md).
 - **Course site:** https://leb2.kmutt.ac.th (materials distributed here, plus the Facebook group
   "CPE334 Software Engineering in the Age of AI Agents"). Textbook: TBA.
 
-## Folder layout
-
-Same as every class (see root [CLAUDE.md](../CLAUDE.md)):
-
-- `assignment/` — assignment briefs, my working files, submissions
-- `lecture/` — slides / PDFs / readings from the lecturer
-- `note/` — my own notes worth keeping
-- `temp/` — scratch; volatile, **never documented**
-- [[CPE334-software-engineering/INDEX|INDEX.md]] — annotated map of this folder
-
 ## Class-specific notes
 
 **The course's premise:** AI coding agents are allowed and encouraged, but they don't replace

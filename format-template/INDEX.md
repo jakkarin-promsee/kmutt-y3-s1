@@ -1,8 +1,7 @@
 # INDEX — <CODE> <Course Name>
 
-Annotated map of this class folder, so an agent (and I) can understand the whole folder **without
-opening every file**. Keep it current: update a section whenever files are added, renamed, or
-removed. **Do not list `temp/`** — it's volatile.
+Annotated map of this class folder, so an agent (and I) can understand it **without opening every
+file**. Update when files are added/renamed/removed. `temp/` is not listed (volatile).
 
 > Format per entry: `[[file]]` — what it is / what it covers (+ due date or status if relevant).
 > Links are Obsidian wiki-links (full syntax and edge cases: the `vault-writing` skill):

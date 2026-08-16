@@ -151,13 +151,16 @@ the subagent.
 
 ---
 
-## After generating
+## Recording a cache in `INDEX.md`
 
-1. **Record it in `INDEX.md`** on the original's own entry, as `*(text cache: [[<name>]])*`. It
-   never gets a bullet of its own — the cache belongs to the file it came from, and so does any
-   reading-copy PDF exported from a `.pptx`. A `.md` with **no** sibling source file (a real note in
-   `note/`) *is* its own entry.
-2. **Never** cache, list, or document anything under `temp/`.
+This is the rule any time an `INDEX.md` is written — not only right after generating something, but
+equally when diffing a folder where nothing new was cached.
+
+1. **The bullet belongs to the source file; the cache hangs off it** as `*(text cache:
+   [[<name>]])*`. A cache never gets a bullet of its own, and neither does a reading-copy `.pdf`
+   exported from a `.pptx` — both are derivatives of the entry above them.
+2. **A `.md` with no sibling source file** — a real note in `note/` — *is* its own entry.
+3. **Never** cache, list, or document anything under `temp/`.
 
 ---
 

@@ -8,8 +8,9 @@ the Map of Content for its class.
 Never skip the class-level `CLAUDE.md`.
 
 **Two skills hold the detail** — `vault-writing` (link syntax, formatting, prose wrap) and
-`pdf-cache` (PDF → Markdown). The one-line versions below are triggers, not the whole rule: load the
-skill before writing links, reflowing prose, or opening a PDF.
+`pdf-cache` (PDF → Markdown). They are the source of truth for their procedures; what this file says
+about them is a trigger, not the rule. Load the skill before writing links, reflowing prose, or
+opening a PDF.
 
 ---
 
@@ -70,8 +71,8 @@ working, fix it:
    a side effect of an unrelated change.
 4. **Every vault file you mention gets a `[[link]]`.** After a rename or move done outside Obsidian,
    fix the links pointing at it — a dead wiki-link still looks valid, which is worse than no link.
-   Syntax and edge cases: the `vault-writing` skill. Whether they still resolve is
-   [[check-links.py]]'s job, never a hand-written checker or a `grep` for `[[`:
+   Syntax, edge cases and verification are the `vault-writing` skill; whether a link still resolves
+   is [[check-links.py]]'s job, never a hand-written checker:
 
    ```bash
    python check-links.py <path>
@@ -86,37 +87,20 @@ working, fix it:
 
 PDF pages load as images and burn context, so every `.pdf` / `.pptx` here gets a `<name>.md` twin,
 generated once and read forever after. **Which files have one is decided by [[check-pdf-cache.py]]
-and by nothing else** — not `ls`, not `find`, not Glob:
+and by nothing else** — not `ls`, not `find`, not Glob, which can't see `.pdfignore` and pair
+basenames wrong:
 
 ```bash
 python check-pdf-cache.py <path>
 ```
 
-A **file** → what to do with that one. A **folder** → every source under it still uncached, or
-`nothing to do`. The four answers:
+**Take its answer and act on it — don't verify it.** Listing a folder to see what files exist (for
+an `INDEX.md` diff) is fine; just never let that listing decide the cache question. If a result
+looks wrong, tell me.
 
-|           | Means                       | Do                                                                                        |
-| --------- | --------------------------- | ----------------------------------------------------------------------------------------- |
-| `CACHED`  | `<name>.md` exists          | read the `.md`, never the PDF                                                             |
-| `MISSING` | no cache yet                | generate it — `pdftotext` for prose, a **Sonnet subagent** for decks with math or figures |
-| `EXPORT`  | a `.pptx` with no `.pdf`    | ask me to export it; never run `pdftotext` on a `.pptx`                                   |
-| `IGNORED` | a `.pdfignore` rule matched | **don't cache it** — I've marked it not worth the tokens                                  |
-
-**Take the answer and act on it — don't verify it.** A file listing genuinely cannot answer this
-question: it can't see the `.pdfignore` rules (which may sit in a parent folder), it shows a
-`.pptx` + `.pdf` + `.md` chain as three unrelated files, and it pairs basenames wrong on names like
-`Lecture+2.v2.pdf`. So checking by hand isn't the careful option — it's the one that's wrong more
-often, and it overrides a correct answer with a worse one. If a result looks wrong, **tell me**;
-`--all` and `--json` are the escalation, not `ls`. Listing a folder to see what files exist (for an
-`INDEX.md` diff) is fine — just never let that listing decide the cache question.
-
-A class folder may carry its own `.pdfignore`. It behaves exactly like `.gitignore` (own folder plus
-everything under it, `#` comments, `!` negation, globs), and Windows-style separators are fine.
-There can be several across the vault, so never assume the rules from one class apply to another —
-the script already resolves that.
-
-Full procedure and the `INDEX.md` bookkeeping: the `pdf-cache` skill. `/update-index` does the whole
-class folder at once.
+The four statuses, generating a missing cache, the `.pptx` hop, `.pdfignore` semantics and the
+`INDEX.md` bookkeeping are all in the `pdf-cache` skill — load it before opening any PDF.
+`/update-index` runs the whole procedure across a class folder at once.
 
 ---
 
@@ -151,4 +135,4 @@ as collaborative, not order-taking:
   from inside a class folder that's `python ../save-checkpoint.py`. Add `--push` to also push. Run
   `--help` for flags.
 - `format-template/` — copy-me starting point for a new class.
-- `.obsidian/` — vault config, don't hand-edit. `.claude/` — settings and slash commands.
+- `.obsidian/` — vault config, don't hand-edit. `.claude/` — settings, slash commands and skills.
