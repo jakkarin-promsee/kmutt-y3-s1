@@ -1,6 +1,6 @@
 ---
 name: vault-writing
-description: Link syntax, formatting, and prose-wrap rules for this Obsidian coursework vault. Load before writing or editing ANY markdown here — INDEX.md entries, class notes, CLAUDE.md — and any time you mention a vault file, because every mention must be a [[wiki-link]] with exact syntax (extensions on non-.md files, path-qualified ambiguous basenames, literal heading anchors). Also covers when NOT to link (folders, dot-folders, placeholders), the <br/> line-break rule, and the never-reflow rule.
+description: Link syntax, formatting, and prose-wrap rules for this Obsidian coursework vault. Load before writing or editing ANY markdown here — INDEX.md entries, class notes, CLAUDE.md — and any time you mention a vault file, because every mention must be a [[wiki-link]] with exact syntax (extensions on non-.md files, path-qualified ambiguous basenames, literal heading anchors). Also covers when NOT to link (folders, dot-folders, placeholders), verifying links with check-links.py rather than a hand-rolled checker, the <br/> line-break rule, and the never-reflow rule.
 ---
 
 # Writing rules — 1_Uni vault
@@ -35,9 +35,15 @@ to it**, so `[[Lecture1_IntroductionToOS.pptx]]` and `[[save-checkpoint.py]]` re
 resolve to nothing. Exactly the silent failure this skill exists to prevent.
 
 **This vault requires *Settings → Files and links → Detect all file extensions* to be ON.** It
-writes `showUnsupportedFiles: true` into `.obsidian/app.json`, which is machine-local and gitignored
-— so it's **one click per machine**, and a fresh clone starts with it off. Never hand-edit
-`.obsidian/`; Obsidian holds that config in memory and overwrites the file when it exits.
+writes `showUnsupportedFiles: true` into `.obsidian/app.json` — and in this repo that file is
+**committed, not gitignored**, so it's one click *once* and every clone inherits it. Commit
+`app.json` after flipping it, or the fix stays on one machine.
+
+`check-links.py` reads that file, so it reports the real state rather than assuming: with the
+setting off, every `[[…py]]` and `[[…pptx]]` link comes back as **DEAD EXTENSION**, because it is
+genuinely dead. Two caveats: Obsidian keeps this config in memory and only writes it on exit, so a
+just-flipped setting shows up after you close the app — and **never hand-edit `.obsidian/`** for the
+same reason, since Obsidian will overwrite whatever you put there.
 
 ### Not links — keep these as inline code
 
@@ -83,6 +89,27 @@ heading's exact characters, including `§` and em dashes: `## §1 — Linking` �
 Obsidian auto-updates links only for renames done *inside* Obsidian — not for files moved in
 Explorer or by a shell command. A wiki-link to a file that no longer exists is worse than no link,
 because it still looks valid.
+
+### Verifying links — run the script, don't grep
+
+`check-links.py` at the vault root is the authority on whether a link resolves. **Never hand-roll a
+checker** — writing a throwaway script, grepping for `[[`, or spot-checking with `ls` costs more
+than the script and gets less:
+
+```bash
+python check-links.py                       # whole vault
+python check-links.py CPE342-machine-learning
+```
+
+Run it after any rename, move, or delete, and before finishing an edit that added links. It reads
+both syntaxes (`[[wiki]]` and `[text](relative)`), blanks out code fences and LaTeX first — this
+file alone quotes a dozen `[[…]]` examples that are **not** links — skips `format-template/`, whose
+placeholder links are fake on purpose, and checks `#Heading` anchors literally, which is the only
+way to catch a table of contents broken by a reworded heading.
+
+It separates **broken** (fix these) from **warnings** (advisory: ambiguous basenames, case-only
+matches, wiki-links in `README.md`). `DEAD EXTENSION` counts as broken, and the fix is the Obsidian
+setting above — **never** by deleting the link or dropping the extension off it.
 
 ---
 

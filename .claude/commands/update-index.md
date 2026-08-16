@@ -1,7 +1,7 @@
 ---
 description: Sync a class folder's INDEX.md (and CLAUDE.md) with disk — including PDF→Markdown caches
 argument-hint: "[folder]  — e.g. CPE342-machine-learning; omit to use the class in context"
-allowed-tools: Bash(find:*), Bash(ls:*), Bash(pdftotext:*), Bash(python check-pdf-cache.py:*), Read, Edit, Write, Glob, Task
+allowed-tools: Bash(find:*), Bash(ls:*), Bash(pdftotext:*), Bash(python check-pdf-cache.py:*), Bash(python check-links.py:*), Read, Edit, Write, Glob, Task
 ---
 
 You are running the **`/update-index`** maintenance command for this Obsidian coursework vault.
@@ -21,9 +21,13 @@ load the `pdf-cache` and `vault-writing` skills — they hold the procedures thi
 1. **List reality.** Recursively list the target's files, excluding `temp/` and dotfiles/dotdirs:
    `find "$1" -not -path '*/temp/*' -not -path '*/.*' -type f | sort`
 
-2. **Ensure every PDF has a Markdown cache (`pdf-cache` skill).** Ask the script which ones are
-   missing — don't compare filenames yourself, and don't skip this because the listing "looks
-   obvious". It is the only thing that reads the class's `.pdfignore`:
+   This listing is for the `INDEX.md` diff in step 4 — *which files exist*. **It is not how you
+   decide which PDFs need a cache**, however obvious it looks: it can't see `.pdfignore` (the rules
+   may live in a parent folder), and it shows a `.pptx` chain as three separate files. Step 2 owns
+   that question.
+
+2. **Ensure every PDF has a Markdown cache (`pdf-cache` skill).** The script is the authority on
+   what's missing. Run it even when you just listed the folder and think you already know:
 
    ```bash
    python check-pdf-cache.py "$1"
@@ -62,10 +66,18 @@ load the `pdf-cache` and `vault-writing` skills — they hold the procedures thi
      `[[Name]]` for its `.md` cache, path-qualified (`[[<CODE>-<name>/INDEX|INDEX.md]]`) for any
      basename that repeats across classes. Never a bare `` `path` `` in backticks.
 
-4b. **Check the links resolve.** Every `[[target]]` you write or leave in `$1/INDEX.md` and
-   `$1/CLAUDE.md` must match a real file: `[[Name]]` needs `Name.md` on disk, `[[Name.pdf]]` needs
-   `Name.pdf`. Fix any link left dangling by a rename or deletion. Links into `.claude/` or
-   `.obsidian/`, to folders, or to `<placeholder>` patterns are wrong — those stay inline code.
+4b. **Check the links resolve — with the script, not by hand.** Don't write your own checker and
+   don't grep for `[[`; `check-links.py` already handles code fences, LaTeX, anchors, and
+   `format-template/`:
+
+   ```bash
+   python check-links.py "$1"
+   ```
+
+   Fix everything under **broken** (`UNRESOLVED`, `RELATIVE`, `NOT LINKABLE`, `BAD ANCHOR`) — those
+   are links left dangling by a rename or deletion, or pointed at `.claude/` / `.obsidian/` /
+   a folder, none of which Obsidian resolves. Warnings are advisory: `AMBIGUOUS` means path-qualify
+   it, and the `.py` / `.pptx` extension warnings are expected and stay.
 
 5. **Update `$1/CLAUDE.md` only if course facts or structure changed** (new grading info, a rename,
    a new subfolder). Smallest correct edit — don't rewrite otherwise.

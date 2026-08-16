@@ -70,7 +70,13 @@ working, fix it:
    a side effect of an unrelated change.
 4. **Every vault file you mention gets a `[[link]]`.** After a rename or move done outside Obsidian,
    fix the links pointing at it — a dead wiki-link still looks valid, which is worse than no link.
-   Syntax and edge cases: the `vault-writing` skill.
+   Syntax and edge cases: the `vault-writing` skill. Whether they still resolve is
+   [[check-links.py]]'s job, never a hand-written checker or a `grep` for `[[`:
+
+   ```bash
+   python check-links.py <path>
+   ```
+
 5. `+`-encoded download names (`Lecture+1+-+Intro.pdf`) can stay; note the readable title in
    `INDEX.md`. Renaming the actual file is my call.
 
@@ -79,8 +85,8 @@ working, fix it:
 ## Reading PDFs — read the cache, not the PDF
 
 PDF pages load as images and burn context, so every `.pdf` / `.pptx` here gets a `<name>.md` twin,
-generated once and read forever after. **Don't work out by hand which files have one** — that's a
-pile of `ls` calls and easy to get wrong. Ask [[check-pdf-cache.py]] instead:
+generated once and read forever after. **Which files have one is decided by [[check-pdf-cache.py]]
+and by nothing else** — not `ls`, not `find`, not Glob:
 
 ```bash
 python check-pdf-cache.py <path>
@@ -89,12 +95,20 @@ python check-pdf-cache.py <path>
 A **file** → what to do with that one. A **folder** → every source under it still uncached, or
 `nothing to do`. The four answers:
 
-| | Means | Do |
-| --- | --- | --- |
-| `CACHED` | `<name>.md` exists | read the `.md`, never the PDF |
-| `MISSING` | no cache yet | generate it — `pdftotext` for prose, a **Sonnet subagent** for decks with math or figures |
-| `EXPORT` | a `.pptx` with no `.pdf` | ask me to export it; never run `pdftotext` on a `.pptx` |
-| `IGNORED` | a `.pdfignore` rule matched | **don't cache it** — I've marked it not worth the tokens |
+|           | Means                       | Do                                                                                        |
+| --------- | --------------------------- | ----------------------------------------------------------------------------------------- |
+| `CACHED`  | `<name>.md` exists          | read the `.md`, never the PDF                                                             |
+| `MISSING` | no cache yet                | generate it — `pdftotext` for prose, a **Sonnet subagent** for decks with math or figures |
+| `EXPORT`  | a `.pptx` with no `.pdf`    | ask me to export it; never run `pdftotext` on a `.pptx`                                   |
+| `IGNORED` | a `.pdfignore` rule matched | **don't cache it** — I've marked it not worth the tokens                                  |
+
+**Take the answer and act on it — don't verify it.** A file listing genuinely cannot answer this
+question: it can't see the `.pdfignore` rules (which may sit in a parent folder), it shows a
+`.pptx` + `.pdf` + `.md` chain as three unrelated files, and it pairs basenames wrong on names like
+`Lecture+2.v2.pdf`. So checking by hand isn't the careful option — it's the one that's wrong more
+often, and it overrides a correct answer with a worse one. If a result looks wrong, **tell me**;
+`--all` and `--json` are the escalation, not `ls`. Listing a folder to see what files exist (for an
+`INDEX.md` diff) is fine — just never let that listing decide the cache question.
 
 A class folder may carry its own `.pdfignore`. It behaves exactly like `.gitignore` (own folder plus
 everything under it, `#` comments, `!` negation, globs), and Windows-style separators are fine.
@@ -129,6 +143,9 @@ as collaborative, not order-taking:
 - [[check-pdf-cache.py]] — `python check-pdf-cache.py <path>` answers "does this PDF already have a
   Markdown cache?" for one file or a whole folder, `.pdfignore` included. See **Reading PDFs**
   above; `--all`, `--stale` and `--json` are in `--help`.
+- [[check-links.py]] — `python check-links.py <path>` verifies every `[[wiki-link]]` and
+  `[text](relative)` link, including `#heading` anchors. Ignores code, LaTeX and
+  `format-template/`. `--strict` exits 1 on breakage; `--json` for structured output.
 - [[save-checkpoint.py]] — `python save-checkpoint.py` stages the whole vault and commits as
   `<dd>/<mm>/<BE year>-<n>`, whichever folder it's run from — though Python still needs the path, so
   from inside a class folder that's `python ../save-checkpoint.py`. Add `--push` to also push. Run

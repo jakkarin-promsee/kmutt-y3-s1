@@ -130,7 +130,7 @@ cd kmutt-y3-s1
 claude
 ```
 
-**One setup step, once per machine.** In Obsidian: \*Settings → Files and links → **Detect all file extensions\*** — on. Without it Obsidian ignores `.pptx` and `.py` entirely, and any `[[link]]` to one renders perfectly while resolving to nothing. The setting lives in `.obsidian/`, which is gitignored, so every fresh clone starts with it off.
+**One setup step.** In Obsidian: \*Settings → Files and links → **Detect all file extensions\*** — on. Without it Obsidian ignores `.pptx` and `.py` entirely, and any `[[link]]` to one renders perfectly while resolving to nothing. It lands in `.obsidian/app.json`, which **is committed here**, so flipping it once and committing that file fixes every clone — but Obsidian only writes the file when it exits, so close the app before you commit. `python check-links.py` reads the same file and reports every link the setting is currently breaking.
 
 ### Daily use (this is the entire workflow)
 
@@ -175,6 +175,7 @@ kmutt-y3-s1/
 ├── PROBLEM.md                   # 🐛 my running pain-point log for the system itself
 ├── save-checkpoint.py           # ⭐ CORE — one-command checkpoint: add + commit + push
 ├── check-pdf-cache.py           # 🔎 which PDFs still need a Markdown cache (honours .pdfignore)
+├── check-links.py               # 🔗 every [[link]] and [text](path) still resolves?
 │
 ├── format-template/             # 🧬 the seed — copy this to create a new class
 │   ├── CLAUDE.md                #    blank per-class instruction file
@@ -194,7 +195,7 @@ kmutt-y3-s1/
 │   ├── settings.json            #    shared permissions (committed)
 │   └── settings.local.json      #    personal permissions (gitignored)
 ├── .gitignore                   # 🙈 temp/, secrets, node_modules — a checkpoint stages everything
-└── .obsidian/                   # 🔗 vault config (gitignored — machine-local)
+└── .obsidian/                   # 🔗 vault config — committed, so settings travel with a clone
 ```
 
 ### Every class folder is the same shape
@@ -282,6 +283,12 @@ This is an [Obsidian](https://obsidian.md) vault, so every reference to a real f
 
 What makes this a _law_ rather than a style preference: a wiki-link Obsidian can't resolve still **looks** valid. Extensions, path-qualified basenames, literal heading anchors, and the file types Obsidian ignores unless told otherwise are each a way to write a link that renders fine and goes nowhere.
 
+**Checked by a script, for the same reason Law I is.** [`check-links.py`](check-links.py) resolves every wiki-link, every relative Markdown link and every `#heading` anchor in the vault — after blanking out code fences and LaTeX, because the docs here quote link syntax as an *example* constantly and `\left[…\right](2)` is a Markdown link to any regex. It separates genuinely broken links from ones that merely resolve *today*, like a bare `[[INDEX]]` that five files answer to. And rather than assume the Obsidian side, it reads `.obsidian/app.json`: if *Detect all file extensions* is off, every `[[…py]]` link in the repo is reported as dead, because it is.
+
+```bash
+python check-links.py
+```
+
 **Full syntax and every edge case:** [`vault-writing`](.claude/skills/vault-writing/SKILL.md).
 
 > **This README is the one deliberate exception.** It uses relative Markdown links, because GitHub renders `[[…]]` as literal dead text. Relative links work in both GitHub _and_ Obsidian.
@@ -299,6 +306,7 @@ The first two are [**the core**](#the-two-main-commands) — everything else is 
 | 📐   | **`vault-writing`** (skill)     | 📦 in this repo — [`.claude/skills/vault-writing/`](.claude/skills/vault-writing/SKILL.md) | Law II in full. Wiki-link syntax and its edge cases, what must _not_ be linked, the `<br/>` rule, and the never-reflow rule. Loads only when markdown is actually being written.                                                                     |
 | 📄   | **`pdf-cache`** (skill)         | 📦 in this repo — [`.claude/skills/pdf-cache/`](.claude/skills/pdf-cache/SKILL.md)         | Law I in full. Check for the cache, generate it with `pdftotext` or a Sonnet subagent, record it in `INDEX.md`. Loads only when a PDF is about to be opened.                                                                                         |
 | 🔎   | **`python check-pdf-cache.py`** | 📦 in this repo — [`check-pdf-cache.py`](check-pdf-cache.py)                               | Law I's lookup, so the agent never guesses. Pairs every `.pdf`/`.pptx` with its `.md` twin and reports only the unpaired ones — one file or a whole folder, `.pdfignore` applied, `temp/` skipped. Zero dependencies, zero model calls.              |
+| 🔗   | **`python check-links.py`**     | 📦 in this repo — [`check-links.py`](check-links.py)                                       | Law II's enforcement. Resolves every `[[wiki-link]]`, `[text](path)` and `#heading` anchor in the vault, skipping code, LaTeX and the template's deliberate placeholders. Separates broken from merely risky (ambiguous basenames, extensions Obsidian hides).                                        |
 | 🕸️   | **`/graphify`**                 | 🌐 global — `~/.claude/skills/graphify/`                                                   | Turns any input into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools. Configured on my machine, **not shipped in this repo** — clone this and you won't have it.                                      |
 
 ### Starting a new class
@@ -416,6 +424,7 @@ It makes my _questions_ cheaper, which means I ask more of them, which is probab
 - [x] `save-checkpoint.py` — one-command drift correction for what git records
 - [x] Custom skills — `pdf-cache` and `vault-writing`, the two Laws in executable form
 - [x] `check-pdf-cache.py` + `.pdfignore` — the cache lookup stops being a judgement call
+- [x] `check-links.py` — dangling-link validation as a script instead of an agent improvising one
 - [ ] Better PDF conversion — library-assisted rather than everything on the subagent _(tracked in [`PROBLEM.md`](PROBLEM.md))_
 - [ ] Remaining two classes (GEN101, GEN241)
 - [ ] Assignment-tracking layer — deadlines and status surfaced without opening each brief

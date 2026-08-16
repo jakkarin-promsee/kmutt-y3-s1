@@ -1,6 +1,6 @@
 ---
 name: pdf-cache
-description: Read the Markdown cache, never the PDF itself. Load before opening ANY .pdf or .pptx in this coursework vault — lecture slides, syllabi, assignment briefs. Covers checking for an existing <name>.md sibling cache with check-pdf-cache.py (one call, and the only thing that applies each folder's .pdfignore), generating one when it's missing or stale (pdftotext for prose, a Sonnet subagent for decks with math or figures), the extra hop for PowerPoint originals (.pptx → reading-copy .pdf → .md), and recording it on the original's INDEX.md entry. Use whenever a task would otherwise mean reading PDF or slide pages directly.
+description: Read the Markdown cache, never the PDF itself. Load before opening ANY .pdf or .pptx in this coursework vault — lecture slides, syllabi, assignment briefs. Covers the single authoritative cache check — check-pdf-cache.py, the only thing that reads each folder's .pdfignore, and never something to re-derive from a file listing — generating a cache when it's missing or stale (pdftotext for prose, a Sonnet subagent for decks with math or figures), the extra hop for PowerPoint originals (.pptx → reading-copy .pdf → .md), and recording it on the original's INDEX.md entry. Use whenever a task would otherwise mean reading PDF or slide pages directly.
 ---
 
 # PDF → Markdown caching
@@ -10,22 +10,14 @@ So every PDF in this vault gets a permanent Markdown twin, generated once and re
 
 ---
 
-## The rule
+## The rule — one question, one authority
 
-**Before reading `<name>.pdf`, look for `<name>.md` in the same folder.** If it exists and is at
-least as new as the PDF, read the `.md` — not the PDF. Stop there.
-
-Only if it's **missing or older than the PDF** do you generate it.
-
----
-
-## Step 0 — ask the script, don't check by hand
-
-`check-pdf-cache.py` at the vault root answers "is there a cache?" in one call, and it's the only
-thing that knows about `.pdfignore`. Run it *before* reading a PDF and *before* generating anything:
+**"Does this file have a Markdown cache?" is answered by `check-pdf-cache.py`, and by nothing
+else.** Not by an `ls`, not by a `find`, not by a Glob, not by what you remember from earlier in
+the session. Run it *before* reading any PDF and *before* generating anything:
 
 ```bash
-python check-pdf-cache.py CPE342-machine-learning/lecture/Lecture+1.pdf
+python check-pdf-cache.py "CPE342-machine-learning/lecture/Lecture+1+-+Introduction+to+ML.pdf"
 python check-pdf-cache.py CPE342-machine-learning
 ```
 
@@ -45,6 +37,43 @@ Flags worth knowing: `--all` prints every source with its status (not just the p
 reads modification times, which a fresh `git clone` resets, so trust it only on a working copy.
 
 Exit status is 0 whenever the scan ran; pending work is not an error. A `2` means the path was wrong.
+
+**Its answer is final. Act on it and move on** — do not confirm it, do not spot-check one file "to
+be safe", do not re-derive it from a listing you happen to already have on screen.
+
+### Why re-checking by hand is *worse*, not safer
+
+This is the part worth internalising: a directory listing cannot answer this question, so a
+hand-check doesn't add a safety net — it produces a **less accurate** answer and then overrides a
+more accurate one. Four things the script knows and a listing structurally cannot:
+
+1. **`.pdfignore` is invisible in a listing.** The rule that governs a file can live in a parent
+   folder you never listed, in any of several `.pdfignore` files across the vault. A PDF that looks
+   uncached to you may be deliberately uncached — regenerating it is exactly what the user asked
+   nobody to do.
+2. **A `.pptx`, its reading-copy `.pdf` and their `.md` are one document, not three files.** A
+   listing shows three lines and invites the wrong conclusion — most often "the `.pptx` needs its
+   own cache", which ends in `pdftotext` being pointed at a `.pptx`.
+3. **Basename pairing has a trap.** `Lecture+2.v2.pdf` pairs with `Lecture+2.v2.md`, not
+   `Lecture+2.md`. Eyeballing similar-looking names gets this wrong silently.
+4. **`temp/` and dot-folders are excluded**, and staleness needs modification times a listing
+   doesn't show you.
+
+The cost argument is real too — one call versus a walk plus a comparison per folder — but accuracy
+is the actual reason. **Being thorough here means running the script, not double-checking it.**
+
+### When the answer looks wrong
+
+Say so, out loud, to the user — then stop. Do **not** quietly fall back to checking by hand; that
+converts a script bug into a silent wrong answer nobody can see.
+
+- Want more detail first? `--all` shows every source with its status, `--json` is structured. Those
+  are the escalation path, not `ls`.
+- `IGNORED` on a file you think matters → tell the user it's ignored and why you'd want it. The
+  `.pdfignore` is their decision, not yours to route around.
+
+Listing a folder for a *different* question — what files exist, for an `INDEX.md` diff — is fine
+and normal. Just never let that listing answer the cache question.
 
 ### `.pdfignore` — files the user doesn't want cached
 

@@ -32,18 +32,6 @@
               "icon": "lucide-file-text",
               "title": "Lab1_Labsheet"
             }
-          },
-          {
-            "id": "9737d4d451ef71dd",
-            "type": "leaf",
-            "state": {
-              "type": "pdf",
-              "state": {
-                "file": "CPE334-software-engineering/assignment/Lab-1/Lab1_Git_GitHub_CheatSheet.pdf"
-              },
-              "icon": "lucide-file-text",
-              "title": "Lab1_Git_GitHub_CheatSheet"
-            }
           }
         ],
         "currentTab": 1
@@ -215,6 +203,12 @@
   },
   "active": "2494b874b70faa72",
   "lastOpenFiles": [
+    "CLAUDE.md.tmp.15544.82365f3599e1",
+    "check-links.py.tmp.15544.c3bc8fc6599d",
+    "check-links.py.tmp.15544.0542d1613a5e",
+    "check-links.py.tmp.15544.ac6f7ce5ecf8",
+    "check-links.py",
+    "CPE333-operating-systems/lecture/Lecture1_IntroductionToOS.md",
     "CLAUDE.md.tmp.20224.6064284c8c1f",
     "check-pdf-cache.py",
     "CPE334-software-engineering/assignment/Lab-1/Untitled.md",
@@ -227,12 +221,7 @@
     "prompts/create-note/engineering-economy.md",
     "PRE380-engineering-economy/note/lecture-2.md.tmp.27244.1bba20306b83",
     "PRE380-engineering-economy/note/lecture-2.md.tmp.27244.344762299864",
-    "PRE380-engineering-economy/note/lecture-2.md.tmp.27244.468a3a24c1d7",
     "PRE380-engineering-economy/note/lecture-2.md",
-    "CPE342-machine-learning/note/lecture-2.md.tmp.1220.12da3481e234",
-    "PRE380-engineering-economy/note/lecture-1.md.tmp.33968.5be062af7742",
-    "CPE342-machine-learning/note/lecture-2.md.tmp.1220.db312233f8cf",
-    "PRE380-engineering-economy/note/lecture-1.md.tmp.33968.fc1383145e12",
     "PRE380-engineering-economy/note/lecture-1.md",
     "CPE342-machine-learning/note/lecture-2.md",
     "prompts/create-note/machine-learning.md",
@@ -250,7 +239,6 @@
     "PRE380-engineering-economy/INDEX.md",
     "format-template - Copy/INDEX.md",
     "format-template - Copy/CLAUDE.md",
-    "CPE342-machine-learning/assignment/Assighment-1.md",
-    "CLAUDE.md"
+    "CPE342-machine-learning/assignment/Assighment-1.md"
   ]
 }

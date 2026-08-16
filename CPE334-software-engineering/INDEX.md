@@ -38,6 +38,12 @@ removed. **Do not list `temp/`** — it's volatile.
 - [[Lab1_Issue_Drafts]] — **ร่างเนื้อ GitHub Issue ทั้ง 4 อัน** ของกูเอง พร้อมก๊อปวางตอนกด New
   issue: title + body (Type, branch, target, dependency, acceptance criteria แบบ checkbox ลอกจาก
   labsheet §7 คำต่อคำ) + label ที่ควรสร้าง + แผนภาพลำดับ dependency ของ Issue 1–4
+- [[report_lab01_67070501009.pdf]] — **my submitted Lab 1 report** (student ID 67070501009) — the
+  compiled PDF handed in for Part 1, mostly evidence screenshots of the repo, board, Issues and PRs.
+  *(No text cache, deliberately: this folder's `.pdfignore` marks it as image-heavy and not worth
+  the tokens, so `check-pdf-cache.py` answers `IGNORED` for it. Open the PDF itself only if a task
+  genuinely needs what's inside — the source of truth for what Lab 1 asked for is
+  [[Lab1_Labsheet]], not this.)*
 
 ## lecture/
 
