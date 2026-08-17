@@ -27,10 +27,10 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.pdf"
+                "file": "CPE342-machine-learning/assignment/Assighment-1.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Lab1_Labsheet"
+              "title": "Assighment-1"
             }
           }
         ],
@@ -201,31 +201,33 @@
       "bases:Create new base": false
     }
   },
-  "active": "2494b874b70faa72",
+  "active": "dac6cd76f5c93437",
   "lastOpenFiles": [
+    "tempCodeRunnerFile.py",
+    "CPE342-machine-learning/assignment/assignmet-1-ols.pdf",
+    "CPE342-machine-learning/assignment/assignme.pdf",
+    "CPE342-machine-learning/assignment/ml-a1-67070501009.pdf",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Guidance.md",
+    "CPE342-machine-learning/assignment/Assighment-1.pdf",
+    "CPE342-machine-learning/assignment/assignment-1-ols.ipynb",
+    "CPE342-machine-learning/lecture/Lecture+2+-+Training+Models.pdf",
+    "CPE342-machine-learning/note/lecture-2.md",
+    "CPE342-machine-learning/note/lecture-1.md",
+    "CPE342-machine-learning/lecture/Lecture+1+-+Introduction+to+ML.pdf",
+    "CPE342-machine-learning/assignment/Assighment-1.md",
+    "README.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.pdf",
+    "PRE380-engineering-economy/CLAUDE.md.tmp.20508.78f8d65f781d",
     "format-template/INDEX.md.tmp.19652.d3fb7812517a",
-    "CLAUDE.md.tmp.15544.82365f3599e1",
-    "check-links.py.tmp.15544.c3bc8fc6599d",
-    "check-links.py.tmp.15544.0542d1613a5e",
-    "check-links.py.tmp.15544.ac6f7ce5ecf8",
-    "check-links.py",
     "CPE333-operating-systems/lecture/Lecture1_IntroductionToOS.md",
-    "CLAUDE.md.tmp.20224.6064284c8c1f",
-    "check-pdf-cache.py",
     "CPE334-software-engineering/assignment/Lab-1/Untitled.md",
     "CPE334-software-engineering/Untitled.md",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.pdf",
-    "CPE334-software-engineering/assignment/Lab-1/report_lab01_67070501009.pdf",
     "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.md",
     "CPE334-software-engineering/assignment/Lab-1/Lab1_Issue_Drafts.md",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Guidance.md",
     "prompts/create-note/engineering-economy.md",
-    "PRE380-engineering-economy/note/lecture-2.md.tmp.27244.1bba20306b83",
     "PRE380-engineering-economy/note/lecture-2.md",
     "PRE380-engineering-economy/note/lecture-1.md",
-    "CPE342-machine-learning/note/lecture-2.md",
     "prompts/create-note/machine-learning.md",
-    "CPE342-machine-learning/note/lecture-1.md",
     "PRE380-engineering-economy/lecture/Chapter+2+-+Engineering+Economy+Factors.md",
     "PRE380-engineering-economy/lecture/Chapter+2+-+Factors,+Effect+of+Time+&+Interest+on+Money.md",
     "PRE380-engineering-economy/lecture/Chapter+1+-+Foundations+of+Engineering+Economy.md",
@@ -237,8 +239,6 @@
     "CPE342-machine-learning/lecture/Lecture+2+-+ML.md",
     "PRE380-engineering-economy/CLAUDE.md",
     "PRE380-engineering-economy/INDEX.md",
-    "format-template - Copy/INDEX.md",
-    "format-template - Copy/CLAUDE.md",
-    "CPE342-machine-learning/assignment/Assighment-1.md"
+    "format-template - Copy/INDEX.md"
   ]
 }

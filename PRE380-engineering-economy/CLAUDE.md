@@ -114,11 +114,12 @@ Engineering economy is graded on *method*, not just the final number. So when he
 - ⚠️ **Assessment #1 is missing half its data.** The brief says to decide between building *or*
   renting, then only gives the numbers for building. See the note in
   [[PRE380-engineering-economy/INDEX|INDEX.md]].
-- 🔑 **These decks hide content behind PowerPoint animation layers — always prefer the cache.** On
-  eight of Chapter 2's worked-example slides, the solution box and cash-flow diagram are *present in
-  the file as text objects but never rendered*: display the page and you see only the question and
-  its multiple-choice options. So the lecturer's own worked method is invisible in the PDF and
-  visible only via the text layer. The caches in `lecture/` merge both, which makes them strictly
+- 🔑 **These decks hide content behind PowerPoint animation layers — always prefer the cache.** This
+  is the one place in the vault where the root rule's `.pdf` > `.md` ranking **inverts**, so it needs
+  saying out loud. On eight of Chapter 2's worked-example slides, the solution box and cash-flow
+  diagram are *present in the file as text objects but never rendered*: display the page and you see
+  only the question and its multiple-choice options. So the lecturer's own worked method is
+  invisible in the PDF and visible only via the text layer. The caches in `lecture/` merge both, which makes them strictly
   more complete than the source — the opposite of the usual cache/original relationship. Two
   practical consequences: **(1)** never conclude "this slide has no solution" from looking at the
   PDF; check the cache or run `pdftotext` on that page. **(2)** when a cache and a page image

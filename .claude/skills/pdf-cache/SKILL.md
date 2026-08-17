@@ -164,11 +164,35 @@ equally when diffing a folder where nothing new was cached.
 
 ---
 
-## Limits — when to read the PDF anyway
+## The cache is not the source of truth
 
-The cache is a **proxy, not a replacement**. Even a good conversion loses layout and figure detail.
-If the task genuinely needs the visuals — a diagram you must reason about, a table whose structure
-matters — read the PDF page(s) directly. That's the exception, not the fallback.
+When two of them disagree, the ranking is:
+
+> **`.pdf` (or the lecturer's `.pptx`) — the truth**
+> **↳ its `.md` cache — a lossy machine translation of the truth**
+> **↳ `INDEX.md` — a hand-written summary *of the cache***
+
+Every step down loses something. `pdftotext` mangles layout and drops figures; a subagent
+transcribing eighty slides will occasionally emit an equation that looks plausible and is simply
+wrong. That is expected, and it's an acceptable trade — the cache exists to make the whole vault
+cheap to read, **not to be quoted as evidence**.
+
+So: work from the `.md` by default. That is the entire point of the system and most questions never
+need more. But **open the actual PDF page whenever the answer depends on**:
+
+- an exact number, coefficient, or table value,
+- a formula you're about to reproduce or compute with,
+- a figure or diagram you must reason about, or a table whose *structure* matters,
+- the lecturer's precise wording — anything gradable, anything being quoted,
+- anything in the cache that looked surprising, garbled, or too convenient.
+
+Say which one you used when it matters. Reading the PDF for these reasons isn't the cache failing —
+it's the cache doing its job of telling you *which page* to open.
+
+**One documented inversion exists.** Some PRE380 decks hide their worked solutions in PowerPoint
+animation layers, so the text layer holds content the rendered page never shows and the cache is
+genuinely *more* complete than the PDF. That class's `CLAUDE.md` says so explicitly. Treat it as the
+exception it is — do not generalise it to other classes.
 
 ---
 

@@ -24,6 +24,20 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   > date is almost certainly **Fri 21 Aug 2026**. Confirm on LEB2 before relying on it.
   > _(The filename typo "Assighment" is the download's own — renaming it is my call.)_
 
+- **[[assignment-1-ols.ipynb]]** — _my working notebook for Assignment 1_ (19 cells). A report
+  skeleton following the brief's three tasks, **scaffold only — the numbers aren't filled in.** Fits
+  the OLS coefficients two independent ways so they cross-check: the deviation-score formula
+  $\hat\beta = S_{xy}/S_{xx}$, and the slide-14 pseudoinverse
+  $\mathbf{B} = (\mathbf{A}^\top\mathbf{A})^{-1}\mathbf{A}^\top\mathbf{y}$ — because the brief says
+  *"Implement"*, not *"Calculate"*, so the formula gets coded rather than delegated to
+  `sklearn.LinearRegression()`. Also carries the by-hand working table, the $R^2$ cell, a
+  scatter-plus-fitted-line plot, and a self-check cell that `assert`s against `np.polyfit` so it
+  reports right/wrong without printing the answer. Conventions: `...  # TODO` = a code blank,
+  `_____` = a prose blank, and every Thai cell or 📝 blockquote is a note to myself to **delete
+  before exporting the PDF**.
+  > Left unsolved on purpose — the numbers are my gradable deliverable (class policy — see
+  > [[CPE342-machine-learning/CLAUDE|CLAUDE.md]]). Export to PDF, submit on LEB2.
+
 ## lecture/
 
 - **[[CPE342+Syllabus.pdf]]** — _Course syllabus_ (2 pp). Course info (Fri 13:30–17:30, CB2506, 3

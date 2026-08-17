@@ -102,6 +102,13 @@ The four statuses, generating a missing cache, the `.pptx` hop, `.pdfignore` sem
 `INDEX.md` bookkeeping are all in the `pdf-cache` skill — load it before opening any PDF.
 `/update-index` runs the whole procedure across a class folder at once.
 
+**But the cache is not the truth — the PDF is.** When two of them disagree the ranking is
+`.pdf` (or the lecturer's `.pptx`) **>** its `.md` cache **>** `INDEX.md`. The cache is a machine
+translation and it *does* hallucinate; it exists so I can see what a lecture covers without paying
+for the pages, not so it can be quoted. Work from the `.md` by default — that's the whole point —
+but **open the actual PDF page the moment an answer turns on an exact number, formula, figure or the
+lecturer's precise wording**, and tell me which one you used. Details in the `pdf-cache` skill.
+
 ---
 
 ## How to work with me (this matters as much as the rules)
