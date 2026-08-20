@@ -1,7 +1,3 @@
-# Scratch folders: volatile by design, never documented, never committed.
-# See the root CLAUDE.md — "temp/ is volatile".
-temp/
-
 # Claude Code machine-local permissions. settings.json is shared and committed;
 # settings.local.json is personal and is not.
 .claude/settings.local.json

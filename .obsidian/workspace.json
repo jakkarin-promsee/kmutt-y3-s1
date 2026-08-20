@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CPE334-software-engineering/assignment/Lab-1/Lab1_Guidance.md",
+                "file": "PRE380-engineering-economy/note/solving-question-format.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lab1_Guidance"
+              "title": "solving-question-format"
             }
           },
           {
@@ -27,14 +27,13 @@
             "state": {
               "type": "pdf",
               "state": {
-                "file": "CPE342-machine-learning/assignment/Assighment-1.pdf"
+                "file": "PRE380-engineering-economy/lecture/Chapter+2+-+COMPOUND+INTEREST+TABLES.pdf"
               },
               "icon": "lucide-file-text",
-              "title": "Assighment-1"
+              "title": "Chapter+2+-+COMPOUND+INTEREST+TABLES"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -201,24 +200,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "dac6cd76f5c93437",
+  "active": "6810a1b092c2bd8f",
   "lastOpenFiles": [
+    "PRE380-engineering-economy/lecture/Chapter+2+-+COMPOUND+INTEREST+TABLES.pdf",
+    "PRE380-engineering-economy/note/solving-question-format.md",
+    "PRE380-engineering-economy/lecture/Chapter+1+-+Foundations+of+Engineering+Economy.pdf",
+    "PRE380-engineering-economy/lecture/Chapter+2+-+Factors,+Effect+of+Time+&+Interest+on+Money.pdf",
+    "PRE380-engineering-economy/lecture/Chapter+2+-+Engineering+Economy+Factors.pdf",
+    "PRE380-engineering-economy/assignment/Assignment-1.md",
+    "PRE380-engineering-economy/note/lecture-1.md",
+    "CPE334-software-engineering/assignment/Lab-1/Lab1_Guidance.md",
     "CPE342-machine-learning/assignment/assignment-1-ols.pdf",
+    "CPE342-machine-learning/assignment/Assighment-1.pdf",
     "CPE342-machine-learning/assignment/assignment-1-ols.ipynb",
     "CPE342-machine-learning/assignment/assignment-1-ols-finished.ipynb",
     "tempCodeRunnerFile.py",
     "CPE342-machine-learning/assignment/assignmet-1-ols.pdf",
-    "CPE342-machine-learning/assignment/assignme.pdf",
-    "CPE342-machine-learning/assignment/ml-a1-67070501009.pdf",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Guidance.md",
-    "CPE342-machine-learning/assignment/Assighment-1.pdf",
-    "CPE342-machine-learning/lecture/Lecture+2+-+Training+Models.pdf",
     "CPE342-machine-learning/note/lecture-2.md",
     "CPE342-machine-learning/note/lecture-1.md",
-    "CPE342-machine-learning/lecture/Lecture+1+-+Introduction+to+ML.pdf",
     "CPE342-machine-learning/assignment/Assighment-1.md",
     "README.md",
-    "CPE334-software-engineering/assignment/Lab-1/Lab1_Labsheet.pdf",
     "CPE333-operating-systems/lecture/Lecture1_IntroductionToOS.md",
     "CPE334-software-engineering/assignment/Lab-1/Untitled.md",
     "CPE334-software-engineering/Untitled.md",
@@ -226,7 +227,6 @@
     "CPE334-software-engineering/assignment/Lab-1/Lab1_Issue_Drafts.md",
     "prompts/create-note/engineering-economy.md",
     "PRE380-engineering-economy/note/lecture-2.md",
-    "PRE380-engineering-economy/note/lecture-1.md",
     "prompts/create-note/machine-learning.md",
     "PRE380-engineering-economy/lecture/Chapter+2+-+Engineering+Economy+Factors.md",
     "PRE380-engineering-economy/lecture/Chapter+2+-+Factors,+Effect+of+Time+&+Interest+on+Money.md",
@@ -234,11 +234,9 @@
     "PRE380-engineering-economy/lecture/Chapter+0+-+Introduction.md",
     "CPE334-software-engineering/lecture/Lecture+2+-+Requirement+Engineering.md",
     "PRE380-engineering-economy/assignment/Assignment-1.jpg",
-    "PRE380-engineering-economy/assignment/Assignment-1.md",
     "CPE342-machine-learning/lecture/Lecture+2+-+Training+Models.md",
     "CPE342-machine-learning/lecture/Lecture+2+-+ML.md",
     "PRE380-engineering-economy/CLAUDE.md",
-    "PRE380-engineering-economy/INDEX.md",
-    "format-template - Copy/INDEX.md"
+    "PRE380-engineering-economy/INDEX.md"
   ]
 }

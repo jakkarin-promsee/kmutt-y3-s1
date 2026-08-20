@@ -191,3 +191,18 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   > column header reads *"Find A Given A"* where *"Find P Given A"* is meant. **(4)** interpolation
   > reads high **because the factor curves are convex**, demonstrated across four factors — the
   > deck states the symptom without the cause. All arithmetic machine-verified.
+
+- **[[solving-question-format]]** — *ลำดับขั้นตอนการแก้โจทย์ (ภาษาไทย)*. Short recall card, not a
+  teaching doc — meant to be read in two minutes before an exam. Three parts: the **7-step
+  procedure** (read/mark → diagram → check service life vs project period → declare assumptions →
+  split into one-factor blocks → notation before numbers → sum, check, interpret), a
+  **factor-selection table** with the placement rules, then **[[Assignment-1]] worked end to end in
+  the layout you'd actually write on exam paper** — diagram, assumptions, factor notation, table
+  lookups, substitution table, boxed PW, AW conversion, plain-language verdict — and finally the
+  formula/trick appendix (geometric gradient, `P/G = (A/G)(P/A)`, common traps, interest-table page
+  map).
+  > Worked answer uses the literal reading of the update clause (**years 4, 8, 12** → PW =
+  > **−13,363,592 ฿**, AW = **−2,624,610 ฿/yr**); the reset-per-server reading (years 4, 8, 14 →
+  > −13,357,787 ฿) is carried as a sensitivity note, since the 0.04% gap changes no conclusion.
+  > Ends on the point [[Assignment-1]] can't escape: with Option 2 missing, the deliverable is the
+  > **break-even rent** — build only if renting costs more than ~2.62 M฿/yr.
