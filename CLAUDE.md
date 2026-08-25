@@ -30,7 +30,7 @@ exactly like this, and keep the Status column in sync.
 
 ---
 
-## Folder layout — identical for every class
+## Folder layout — the same four folders in every class
 
 ```
 <CODE>-<name>/
@@ -44,6 +44,12 @@ exactly like this, and keep the Status column in sync.
 
 Where a file goes: from the lecturer → `lecture/` · about one assignment → `assignment/` · my own
 keepable writing not tied to an assignment → `note/` · throwaway or half-baked → `temp/`.
+
+**A class may add one extra folder when its work genuinely doesn't fit those four.** CPE333 has
+`workspace/`, because compiling C drops binaries that would bury `assignment/`. The exception is
+real only once the class's own `CLAUDE.md` says what belongs in it and its `INDEX.md` has a section
+for it — an undocumented extra folder is drift, and the fix is to ask me, not to infer a convention
+from it. Never add one to `format-template/`: the template stays at four.
 
 New class: copy `format-template/` to `<CODE>-<name>/`, fill in its two files, add the table row.
 

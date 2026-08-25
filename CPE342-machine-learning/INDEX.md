@@ -38,6 +38,43 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   > Left unsolved on purpose — the numbers are my gradable deliverable (class policy — see
   > [[CPE342-machine-learning/CLAUDE|CLAUDE.md]]). Export to PDF, submit on LEB2.
 
+- **[[assignment-2.pdf]]** — _Assignment 2: Training models via iterative approach_ (1 p, 10 pts).
+  **Gradient descent**, the iterative counterpart to Assignment 1's closed-form OLS. Fit the
+  nonlinear model $\hat{y} = c_0 + c_1e^{c_2x}$ to a ~100-point dataset by GD. Five tasks:
+  (1) write the error/loss function (1 pt); (2) write the gradient of each coefficient (3 pts);
+  (3) write the update rules (1 pt); (4) implement GD on the given data (4 pts); (5) show the loss
+  over iterations and the resulting coefficients (1 pt). Submit as a **PDF report on LEB2**. This is
+  exactly the model derived by hand in [[Lecture+2+-+ML.pdf]] — equations (1)–(3) on its page 2 are
+  task 2, and its page-3 flowchart is tasks 3–4.
+  _(Text cache: [[assignment-2]] — `pdftotext` base, hand-repaired: the model equation uses Cambria
+  Math private-use codepoints that extract as `������`, and the data scatter plot is an embedded
+  image that text extraction drops. Both transcribed into the cache from the page.)_
+  > ⚠️ **Due date is stale**, same reused-brief pattern as [[Assighment-1.pdf]]: the header prints
+  > _"1/2024"_ and _"Due: 4 Sep 2024"_ (a **two**-week window from its 21 Aug 2024 creation date,
+  > not the syllabus's one week). Lecture 3 was handed out **Fri 21 Aug 2026**, so the real due date
+  > is **Fri 28 Aug** or **Fri 4 Sep 2026**. Confirm on LEB2.
+  > **The dataset is not in the PDF** — it sits behind a Google Drive link on the page (see the
+  > cache); the figure on the page is only a picture of it. Downloaded as [[A2.csv]].
+
+- **[[A2.csv]]** — the Assignment 2 dataset, pulled from the Drive link in [[assignment-2]].
+  100 rows × 2 columns, `X` and `Y`: `X` spans 0.011–4.978, `Y` decays from 1.971 down to a noisy
+  plateau at ≈0.95 — matches the scatter printed in the brief. Fitted by
+  [[assignment-2-gd.ipynb]].
+
+- **[[assignment-2-gd.ipynb]]** — _my working notebook for Assignment 2_ (13 cells), the gradient
+  descent counterpart to [[assignment-1-ols.ipynb]]. Laid out as the brief's five tasks: tasks 1–2
+  (loss + gradients) and task 3 (update rules) are **handwritten on GoodNotes** and slot in as
+  [[a2-proff.jpg]] and [[a2-proff3.jpg]]; task 4 is a hand-written batch-GD loop on
+  [[A2.csv]] — MSE loss, all three gradients computed from the old coefficients then updated
+  simultaneously; task 5 prints the coefficients and draws loss-vs-iteration beside the fitted
+  curve over the scatter. Conventions carried over from Assignment 1: `_____` = a blank to fill,
+  and every 📝 blockquote is a note to myself to **delete before exporting the PDF**.
+  _(PDF export: [[assignment-2-gd.pdf]] — 4 pp, generated from the notebook for LEB2 submission.)_
+  > Run at $lpha = 0.01$, 5000 epochs, init $(1, 1, -1)$ it lands on
+  > $(0.987,\ 0.941,\ -1.247)$ with MSE $0.001156$ — the optimum is $(1.003,\ 0.999,\ -1.530)$ at
+  > MSE $0.000755$, so **that setting stops short**; the loss curve is still visibly falling at the
+  > last iteration. $lpha = 0.05$ reaches it in the same 5000 epochs, $lpha = 1.0$ diverges.
+
 ## lecture/
 
 - **[[CPE342+Syllabus.pdf]]** — _Course syllabus_ (2 pp). Course info (Fri 13:30–17:30, CB2506, 3
@@ -110,6 +147,11 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   images; `pdftotext` returns pure garbage because the pages are scans. Handwriting is ambiguous —
   unclear symbols are marked `⟨?⟩` inline, so verify against the PDF before trusting a formula in
   an exam or a submission. **Page 1 is a blank red scanning artifact, not a missing page.**)_
+
+- **[[Lecture+3+-+Support+Vector+Machine.pdf]]** — _Lecture 3: Support Vector Machine_ (taught
+  **Fri 21 Aug 2026**). Not yet summarised — added to the vault 24 Aug 2026 and not opened.
+  _(Text cache: **missing.** Run `/update-index` or the `pdf-cache` skill to generate it — it is a
+  slide deck with math, so it needs a Sonnet subagent, not `pdftotext`.)_
 
 ## note/
 

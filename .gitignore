@@ -35,3 +35,15 @@ venv/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# CPE333 workspace/: gcc writes extension-less ELF binaries beside the sources
+# (q3.c -> q3), so there is no extension to match on. Ignore the folder, then
+# whitelist the file types worth committing. `!*/` keeps git descending into any
+# PS<n>/ subfolders added later.
+CPE333-operating-systems/workspace/*
+!CPE333-operating-systems/workspace/*/
+!CPE333-operating-systems/workspace/*.c
+!CPE333-operating-systems/workspace/*.h
+!CPE333-operating-systems/workspace/*.py
+!CPE333-operating-systems/workspace/*.md
+!CPE333-operating-systems/workspace/*.txt

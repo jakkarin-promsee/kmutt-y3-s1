@@ -21,6 +21,19 @@ before working on anything in this class. For vault-wide rules, see the root
 code**. Expect C, system calls, and real kernel/POSIX APIs — not pseudocode. When writing example
 code for this class, default to **C** (POSIX), not Python.
 
+**`workspace/` — the extra folder, this class only.** Problem sessions are C programs, and
+`gcc -o q3 q3.c` drops an extension-less ELF binary right beside its source. Letting that into
+`assignment/` would bury the brief and the report under build output, so **compiling happens in
+`workspace/`**: `.c` sources, build scripts, and captured terminal output. What actually gets
+**submitted** — the brief PDF and the report — still lives in `assignment/`. Flat is fine while
+PS2 is the only session; split into `PS<n>/` subfolders once a second one lands. Two rules that
+are easy to get wrong:
+
+- The binaries are gitignored at the vault root, so a checkpoint commits only `.c`, `.h`, `.py`
+  and `.md` out of that folder. Don't `git add -f` a binary to "keep the build".
+- Unlike `temp/`, `workspace/` **is** indexed — it has its own section in
+  [[CPE333-operating-systems/INDEX|INDEX.md]], listing sources only, never binaries.
+
 **Textbooks:**
 
 1. *Operating Systems: Three Easy Pieces* — Arpaci-Dusseau (the primary one; free online, OSTEP)
