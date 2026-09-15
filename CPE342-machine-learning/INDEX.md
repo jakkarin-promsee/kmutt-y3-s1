@@ -75,6 +75,74 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   > MSE $0.000755$, so **that setting stops short**; the loss curve is still visibly falling at the
   > last iteration. $lpha = 0.05$ reaches it in the same 5000 epochs, $lpha = 1.0$ diverges.
 
+- **`assignment/a3/`** — Assignment 3 sits in its own subfolder (the first one here; A1 and A2 are
+  flat in `assignment/`), because the activity ships with both its dataset and the in-class
+  notebook. **There is no PDF brief** — the task is the last cell of the lecturer's notebook:
+  _"Use Telco Churn dataset and build a Kaplan Meier survival analysis. Compare lifetime between
+  different payment methods."_
+
+  - **[[6_regression.ipynb]]** — the **lecturer's** Module 6 notebook, handed out in class (98
+    cells, outputs kept). `mtcars` correlation heatmap → `statsmodels` OLS → scikit-learn multiple
+    regression → **Poisson regression / GLM** on mine-injury data with a `cancer.xls` activity →
+    **§8 survival analysis** with `lifelines` (Kaplan-Meier on the `load_dd` political-regimes data,
+    segmented democratic vs non-democratic) → **§9 Cox proportional hazards** on `load_rossi`. Its
+    §8 is the template the activity is modelled on.
+
+  - **[[Telco+Churn.csv]]** — the activity's dataset. 7043 rows × 21 cols, one row per customer:
+    `tenure` (months in service, 0–72) is the duration, `Churn` (Yes/No) is the event, and
+    `PaymentMethod` is the grouping variable — Electronic check 2365 · Mailed check 1612 · Bank
+    transfer (automatic) 1544 · Credit card (automatic) 1522. Overall churn 1869 / 7043 ≈ 26.5%, so
+    **~73% of rows are censored**. 11 rows have `tenure = 0` and a blank `TotalCharges` (brand-new
+    customers, all `Churn = No`) — they carry no information for KM.
+
+  - **[[assignment-3.ipynb]]** — _my working notebook for the activity_ (29 cells). Built as small
+    step-by-step cells that each `print` a check rather than long prose: load → map `Churn` to a
+    0/1 `event` (verified with a `crosstab`) → drop the 11 `tenure = 0` rows → baseline KM over all
+    customers → raw churn rate per payment method as a sanity check → four KM curves overlaid with
+    confidence intervals → a summary table → `multivariate_logrank_test` and
+    `pairwise_logrank_test`. Section 8 is the conclusion, filled from the output.
+    _(PDF export: [[assignment-3.pdf]] — 7 pp, generated from the notebook for LEB2 submission.)_
+    > **Median survival is `inf` for three of the four groups** — S(t) never falls to 0.5 inside 72
+    > months, so medians can't rank them. The notebook compares S(12)/S(24)/S(48) and **RMST at
+    > t = 72** instead. Result: Credit card ≈ Bank transfer (log-rank p = 0.35, the only
+    > non-significant pair) ≫ Mailed check ≫ Electronic check, whose RMST is 41.2 vs 63.8 months.
+
+- **`assignment/a4/`** — Assignment 4, its own subfolder like `a3/`, and for the same reason: the
+  lecturer's notebook ships with the dataset. **No PDF brief** — the task is the whole of
+  [[detail]], written down in class: *"ใช้ Decision tree / Random forest / Gradient boosting
+  ทำนายผลการรับนักศึกษา (admission) ว่าได้รับ admit หรือไม่"*. Pairs with
+  [[Lecture+5+-+Tree-based+and+Ensemble+Models.pdf]], handed out **Fri 4 Sep 2026** → due **Fri 11
+  Sep 2026** under the one-week policy. Confirm on LEB2.
+
+  - **[[5(1)_classification_tree-based.ipynb]]** — the **lecturer's** Module 5(1) notebook (57
+    cells, outputs stripped). Worked on `hr_attrition.csv` (not included): numeric/categorical
+    split → `get_dummies(drop_first=True)` → `train_test_split` → `DecisionTreeClassifier` →
+    graphviz tree plot → `feature_importances_` → `predict` / `predict_proba` → confusion matrix,
+    `classification_report`, ROC/AUC. **Decision tree only** — the random-forest and
+    gradient-boosting half of Lecture 5 is in a Module 5(2) notebook that wasn't handed out, so the
+    ensemble code comes from the deck, not from here. Two cells are Colab-only
+    (`google.colab.drive`, pickling to Drive) and one needs `pydotplus` + graphviz.
+
+  - **[[MBA.csv]]** — the assignment's dataset. 6194 rows × 10 cols, one row per MBA applicant:
+    `gpa` (2.65–3.77), `gmat` (570–780), `work_exp` (1–9 yrs), plus `gender`, `international`,
+    `major`, `race`, `work_industry`, and the target `admission`. **Two traps worth knowing before
+    modelling.** (1) `admission` is blank on 5194 rows — those are **Deny**, not missing data; only
+    `Admit` (900) and `Waitlist` (100) are spelled out, so the positive class is 900/6194 ≈ 14.5%
+    and the data is imbalanced. (2) `race` is blank on exactly the 1842 rows where
+    `international == True` — the column is only recorded for domestic applicants, so it's a
+    category ("International"), not a hole to drop or impute.
+
+  - **[[assignment-4.ipynb]]** — _my working notebook for the assignment_ (46 cells), same
+    small-cells-that-print-a-check shape as [[assignment-3.ipynb]]: load → `admission` → 0/1
+    `admit` target (crosstab-verified, `NaN` folded into 0) → drop `application_id` → the
+    `race`/`international` crosstab and the `International` fill → `get_dummies` → stratified
+    70/30 holdout → one `evaluate()` helper reused by all three models → **decision tree**
+    (`class_weight='balanced'`, `plot_tree` at depth 2) → **random forest** (300 trees,
+    `balanced_subsample`, `oob_score`) → **gradient boosting** (300 rounds, `learning_rate=0.05`,
+    balanced `sample_weight` — the class has no `class_weight` argument) → a comparison table and
+    three ROC curves on one axis. Section 12 is the conclusion, filled from the output.
+    _(PDF export: [[assignment-4.pdf]] — 10 pp, generated from the notebook for LEB2 submission.)_
+
 ## lecture/
 
 - **[[CPE342+Syllabus.pdf]]** — _Course syllabus_ (2 pp). Course info (Fri 13:30–17:30, CB2506, 3
@@ -152,6 +220,27 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   **Fri 21 Aug 2026**). Not yet summarised — added to the vault 24 Aug 2026 and not opened.
   _(Text cache: **missing.** Run `/update-index` or the `pdf-cache` skill to generate it — it is a
   slide deck with math, so it needs a Sonnet subagent, not `pdftotext`.)_
+
+- **[[Lecture+4+-+Regression.pdf]]** — _Lecture 4: Regression_. Not yet summarised — added to the
+  vault 31 Aug 2026 and not opened. Almost certainly the deck behind the lecturer's
+  [[6_regression.ipynb]] in `assignment/a3/`, which is the coding half of the same material
+  (regression → GLM/Poisson → survival analysis → Cox PH).
+  _(Text cache: **missing.** Run `/update-index` or the `pdf-cache` skill to generate it — a slide
+  deck with math, so it needs a Sonnet subagent, not `pdftotext`.)_
+
+- **[[Lecture+5+-+Tree-based+and+Ensemble+Models.pdf]]** — _Lecture 5: Tree-Based and Ensemble
+  Models_ (taught **Fri 4 Sep 2026**, downloaded 7 Sep). Three topics per its own agenda slide:
+  **decision trees** (supervised segmentation, purity, entropy, information gain worked on the
+  write-off example, Gini as the alternative split criterion, then accuracy/precision/recall/
+  F-measure and ROC–AUC), **bagging** (bootstrap samples → vote/average, out-of-bag error, variance
+  reduction, → random forests: 100–500 trees, `m` random variables per node, grown to full depth),
+  and **boosting** (AdaBoost → gradient boosting = gradient descent + boosting, fitting each new
+  weak learner to the residual → xgboost's regularization / sparsity awareness / parallelization /
+  cache-aware access). Closes on bagging-is-robust-to-noise vs boosting-squeezes-performance. Two
+  Google Drive links on the section-divider slides. The coding half is
+  [[5(1)_classification_tree-based.ipynb]] in `assignment/a4/`.
+  _(Text cache: **missing.** Run `/update-index` or the `pdf-cache` skill to generate it — a slide
+  deck with math and figures, so it needs a Sonnet subagent, not `pdftotext`.)_
 
 ## note/
 

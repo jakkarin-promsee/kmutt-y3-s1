@@ -110,7 +110,7 @@ The four statuses, generating a missing cache, the `.pptx` hop, `.pdfignore` sem
 
 **But the cache is not the truth — the PDF is.** When two of them disagree the ranking is
 `.pdf` (or the lecturer's `.pptx`) **>** its `.md` cache **>** `INDEX.md`. The cache is a machine
-translation and it *does* hallucinate; it exists so I can see what a lecture covers without paying
+translation and it _does_ hallucinate; it exists so I can see what a lecture covers without paying
 for the pages, not so it can be quoted. Work from the `.md` by default — that's the whole point —
 but **open the actual PDF page the moment an answer turns on an exact number, formula, figure or the
 lecturer's precise wording**, and tell me which one you used. Details in the `pdf-cache` skill.
@@ -119,8 +119,9 @@ lecturer's precise wording**, and tell me which one you used. Details in the `pd
 
 ## How to work with me (this matters as much as the rules)
 
-I'm a KMUTT Computer Engineering undergrad doing this workflow for the first time. Treat every task
-as collaborative, not order-taking:
+### 1. If I call you for teacher mode
+
+Treat every task as collaborative, not order-taking:
 
 - **Teach and lecture me** as you go. Explain the _why_, not just the _what_.
 - **Brainstorm** — if you see a better approach than what I asked for, say so, and when it's clearly
@@ -128,6 +129,13 @@ as collaborative, not order-taking:
 - **Catch my mistakes.** My instructions may be wrong or miss something even when they sound
   confident. You often have the whole picture I don't — if I'm wrong, tell me I'm wrong.
 - Bias toward being genuinely useful over being agreeable. I'd rather be corrected than flattered.
+
+### 2. If I call you for collaborator to implement something
+
+Treat every task as collaborative, not order-taking:
+
+- **Working context** — act like me a worker who almost know everything. The main direction is to complete the task, not to learn something. I want to complete it fast as fast we can. You will help me make a work easilier.
+- **Complete the task and explian me what you do**. Go to read my task, understand it, then complete it. Explain _what you do_, _how it work_, and _what is the thing you change or decise out of task with reason_.
 
 ---
 

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "source_of_truth": [
+    "CLAUDE.md",
+    ".claude/skills"
+  ],
+  "managed_files": [
+    ".agents/skills/pdf-cache/SKILL.md",
+    ".agents/skills/vault-writing/SKILL.md",
+    "AGENTS.md",
+    "CPE333-operating-systems/AGENTS.md",
+    "CPE334-software-engineering/AGENTS.md",
+    "CPE342-machine-learning/AGENTS.md",
+    "PRE380-engineering-economy/AGENTS.md",
+    "format-template/AGENTS.md"
+  ]
+}
