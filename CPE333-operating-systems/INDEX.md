@@ -18,6 +18,17 @@ file**. Update when files are added/renamed/removed. `temp/` is not listed (vola
   message, read before write, several writes before a read). Deliverable is a **PDF report** to LEB2
   — source code + explanation, results, discussion. No C files submitted.
   *(text cache: [[PS2_2026]])*
+- [[CPE333-operating-systems/assignment/ps3/PS3_OS_2026.pdf|PS3_OS_2026.pdf]] — **Problem Session 3:
+  Process Manipulation & Monitoring** — group work (up to 3–4 students). Covers Linux process/job
+  commands, foreground/background shell jobs, GUI monitoring tools on Linux and Windows, and a C
+  simulation of STCF scheduling. Submit one document to LEB2 with explanations, examples,
+  screenshots, results, and discussion; no code files are submitted.
+  *(text cache: [[CPE333-operating-systems/assignment/ps3/PS3_OS_2026|PS3_OS_2026]])*
+- [[CPE333-operating-systems/assignment/ps3/PS3.c|PS3.c]] with
+  [[CPE333-operating-systems/assignment/ps3/case1.csv|case1.csv]],
+  [[CPE333-operating-systems/assignment/ps3/case2.csv|case2.csv]], and
+  [[CPE333-operating-systems/assignment/ps3/case3.csv|case3.csv]] — starter program and three input
+  cases for the PS3 STCF scheduler task, supplied via LEB2.
 
 ## lecture/
 

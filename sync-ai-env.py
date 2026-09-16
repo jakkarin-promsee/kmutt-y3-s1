@@ -6,8 +6,9 @@ CLAUDE.md and .claude/skills remain the source of truth. This script mirrors:
     **/CLAUDE.md          -> **/AGENTS.md
     **/.claude/skills/**  -> **/.agents/skills/**
 
-Only files recorded in the generated manifest are eligible for stale-file
-cleanup, so unrelated files under .agents are left alone.
+In mirrored UTF-8 text files, references to ``CLAUDE.md`` are rewritten as
+``AGENTS.md``. Only files recorded in the generated manifest are eligible for
+stale-file cleanup, so unrelated files under .agents are left alone.
 """
 
 from __future__ import annotations
@@ -23,6 +24,7 @@ from pathlib import Path
 
 
 MANIFEST_PATH = Path(".agents/.sync-ai-env-manifest.json")
+TEXT_REPLACEMENTS = (("CLAUDE.md", "AGENTS.md"),)
 IGNORED_DIRECTORIES = {
     ".agents",
     ".claude",
@@ -157,11 +159,23 @@ def file_digest(path: Path) -> str:
     return digest.hexdigest()
 
 
-def files_match(source: Path, target: Path) -> bool:
+def rendered_content(source: Path) -> bytes:
+    content = source.read_bytes()
+    try:
+        text = content.decode("utf-8")
+    except UnicodeDecodeError:
+        return content
+
+    for old, new in TEXT_REPLACEMENTS:
+        text = text.replace(old, new)
+    return text.encode("utf-8")
+
+
+def files_match(content: bytes, target: Path) -> bool:
     return (
         target.is_file()
-        and source.stat().st_size == target.stat().st_size
-        and file_digest(source) == file_digest(target)
+        and len(content) == target.stat().st_size
+        and hashlib.sha256(content).hexdigest() == file_digest(target)
     )
 
 
@@ -207,11 +221,12 @@ def sync(args: argparse.Namespace) -> int:
     stale = sorted(previously_managed - managed_now)
     changed = False
     conflicts: list[str] = []
-    operations: list[tuple[str, Mapping]] = []
+    operations: list[tuple[str, Mapping, bytes]] = []
 
     for item in mappings:
         target_relative = relative_posix(item.target, root)
-        if files_match(item.source, item.target):
+        content = rendered_content(item.source)
+        if files_match(content, item.target):
             continue
 
         changed = True
@@ -229,7 +244,7 @@ def sync(args: argparse.Namespace) -> int:
             conflicts.append(target_relative)
             print(f"[conflict] {target_relative} (target is not a file)")
             continue
-        operations.append((action, item))
+        operations.append((action, item, content))
 
     stale_files: list[tuple[str, Path]] = []
     for target_relative in stale:
@@ -254,12 +269,13 @@ def sync(args: argparse.Namespace) -> int:
         )
         return 1 if args.check else 2
 
-    for action, item in operations:
+    for action, item, content in operations:
         target_relative = relative_posix(item.target, root)
         print(f"[{action}] {target_relative}")
         if not args.check and not args.dry_run:
             item.target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(item.source, item.target)
+            item.target.write_bytes(content)
+            shutil.copystat(item.source, item.target)
 
     for target_relative, target in stale_files:
         print(f"[delete] {target_relative}")
