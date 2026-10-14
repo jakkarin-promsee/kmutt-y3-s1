@@ -69,7 +69,7 @@ Identical layout across all classes isn't aesthetics — it's what lets an agent
 
 ## The idea: hard compute once, cheap forever
 
-Every conversation with an AI assistant starts at zero. You paste a slide deck, explain which course it's for, explain that the deadline is one week and the lecturer forbids posted solutions, get an answer, close the tab — and all of that context evaporates. Meanwhile the raw material is hostile to machines: a lecture deck is 83 slides of _images_, so reading it burns enormous context and every equation comes out as `������`.
+Every conversation with an AI assistant starts at zero. You paste a slide deck, explain which course it's for, explain that the deadline is one week and the lecturer forbids posted solutions, get an answer, close the tab — and all of that context evaporates. Meanwhile the raw material is hostile to machines: a lecture deck is 83 slides of _images_, so reading it burns enormous context and every equation comes out as `�������`.
 
 So pay that expensive cost **exactly once**, at ingest, and write the result down in durable plain text.
 
